@@ -5,19 +5,19 @@ import styles from './IconButton.module.css'
 
 interface IIconButton {
   value?: string
-  type: 'gps' | 'main'
-  state?: 'on' | 'off'
+  name: 'gps' | 'main'
+  on?: boolean
 }
 
-export const IconButton: FC<IIconButton> = ({ value, type, state }) => {
+export const IconButton: FC<IIconButton> = ({ value, name, on }) => {
 
   return (
-    <div className={`${styles.iconbutton} ${type === 'gps'? styles.gps : null} ${state === 'on'? styles.primary : styles.secondary}`}>
-      {type === 'gps'? <GpsFixedIcon /> : `${value}`}
-    </div>
+    <button type='button' className={`${styles.iconbutton} ${name === 'gps'? styles.gps : null} ${on? styles.primary : styles.secondary}`}>
+      {name === 'gps'? <GpsFixedIcon /> : `${value}`}
+    </button>
   )
 }
 
-// <IconButton value="&deg;C" type="main" state="on" />
-// <IconButton value="&deg;F" type="main" state="off" />
-// <IconButton type="gps" />
+// <IconButton value="&deg;C" name="main" on=true />
+// <IconButton value="&deg;F" name="main" on=false />
+// <IconButton name="gps" />
