@@ -14,3 +14,5 @@ export const WeatherTitle: FC<IWeatherTitle> = ({ value }) => {
     </div>
   )
 }
+
+// <WeatherTitle value="Shower" />
