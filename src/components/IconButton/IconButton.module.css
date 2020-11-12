@@ -5,6 +5,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21.13px;
+  border: none;
 }
 
 .primary {
@@ -18,7 +22,7 @@
 }
 
 .gps {
-  color: #e7e7eb; /* set to CSS variable later? */
-  background-color: rgba(255, 255, 255, 0.2); /* set to CSS variable later? */
+  /* set to CSS variable later? */
+  background-color: #6e707a;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
