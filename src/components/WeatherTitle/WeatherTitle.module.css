@@ -3,5 +3,5 @@
   font-size: 36px;
   line-height: 42.26px;
   text-align: center;
-  color: #a09fb1;
+  color: var(--color-primary-dark);
 }
