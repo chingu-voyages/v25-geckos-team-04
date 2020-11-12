@@ -6102,6 +6102,7 @@ husky@^4.3.0:
     which-pm-runs "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ||||||| parent of ce6db54... Updated component with requested changes from Stanley
 =======
 hyphenate-style-name@^1.0.3:
@@ -6118,6 +6119,14 @@ hyphenate-style-name@^1.0.3:
   integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
 
 >>>>>>> 5c82935... Updated with latest changes from develop
+||||||| 3252fa5
+=======
+hyphenate-style-name@^1.0.3:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/hyphenate-style-name/-/hyphenate-style-name-1.0.4.tgz#691879af8e220aea5750e8827db4ef62a54e361d"
+  integrity sha512-ygGZLjmXfPHj+ZWh6LwbC37l43MhfztxetbFCoYTM2VjkIUpeHgSNn7QIyVFj7YQ1Wl9Cbw5sholVJPzWvC2MQ==
+
+>>>>>>> 5c82935ea04a4e8f37bbc873d79b8c46e259bdfe
 iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
