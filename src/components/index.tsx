@@ -1,1 +1,1 @@
-export { WeatherTitle } from './WeatherTitle/index'
+export { WeatherTitle } from './WeatherTitle'
