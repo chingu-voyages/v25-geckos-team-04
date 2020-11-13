@@ -3,12 +3,11 @@ import GpsFixedIcon from '@material-ui/icons/GpsFixed'
 import styles from './IconButton.module.css'
 
 interface IIconButton {
-  value?: string
-  name: 'gps' | 'main'
+  name: 'gps' | 'celcius' | 'fahrenheit'
   on?: boolean
 }
 
-export const IconButton: FC<IIconButton> = ({ value, name, on }) => {
+export const IconButton: FC<IIconButton> = ({ name, on }) => {
   return (
     <button
       type="button"
@@ -16,11 +15,13 @@ export const IconButton: FC<IIconButton> = ({ value, name, on }) => {
         on ? styles.primary : styles.secondary
       }`}
     >
-      {name === 'gps' ? <GpsFixedIcon fontSize="large" /> : `${value}`}
+      {name === 'gps' && <GpsFixedIcon fontSize="large" />}
+      {name === 'celcius' && <span>&deg;C</span>}
+      {name === 'fahrenheit' && <span>&deg;F</span>}
     </button>
   )
 }
 
-// <IconButton value="&deg;C" name="main" on=true />
-// <IconButton value="&deg;F" name="main" on=false />
+// <IconButton name="celcius" on=true />
+// <IconButton name="fahrenheit" on=false />
 // <IconButton name="gps" />
