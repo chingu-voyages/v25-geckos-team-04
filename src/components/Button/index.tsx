@@ -2,17 +2,16 @@ import React, { FC } from 'react'
 import styles from './Button.module.css'
 
 interface IButton {
-  scale?: 'fahrenheit' | 'celsius'
+  color?: 'primary' | 'secondary'
   value: string | number
 }
 
-export const Button: FC<IButton> = ({ scale = 'celsius', value }) => {
+export const Button: FC<IButton> = ({ color = 'primary', value }) => {
   return (
     <>
-      <span className={styles.value}>{value}</span>
-      <span className={styles.scale}>
-        &deg;{scale === 'celsius' ? 'C' : 'F'}
-      </span>
+      <button className={color === 'primary' ? 'styles.button-primary' : 'styles.button-secondary'}>
+        {value}
+      </button>
     </>
   )
 }
