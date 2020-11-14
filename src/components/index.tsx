@@ -1,1 +1,2 @@
-export { Temperature } from './Temperature'
+export { IconButton } from './IconButton'
+export { WeatherTitle } from './WeatherTitle'
