@@ -8,3 +8,7 @@
   color: var(--gray-1);
   margin-left: .4rem;
 }
+
+.place .symbol {
+  font-size: 2rem;
+}

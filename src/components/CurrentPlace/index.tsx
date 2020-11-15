@@ -9,7 +9,7 @@ interface ICurrentPlace {
 export const CurrentPlace: FC<ICurrentPlace> = ({ place }) => {
   return (
     <div className={styles.place}>
-      <PlaceIcon style={{ fontSize: 20 }} />
+      <PlaceIcon className={styles.symbol} />
       <span className={styles.title}>{place}</span>
     </div>
   )
