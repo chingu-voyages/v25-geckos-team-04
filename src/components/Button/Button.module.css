@@ -1,12 +1,12 @@
 .btnPrimary {
-  padding: 10px 18px;
+  padding: 1rem 1.8rem;
   background-color: var(--gray-2);
   color: var(--color-primary-light);
   border: none;
 }
 
 .btnAccent {
-  padding: 10px 18px;
+  padding: 1rem 1.8rem;
   background-color: var(--color-accent-light);
   color: var(--color-primary-light);
   border: none;
