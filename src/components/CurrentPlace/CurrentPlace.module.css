@@ -6,7 +6,7 @@
 .place .title {
   font-size: 1.8rem;
   color: var(--gray-1);
-  margin-left: .4rem;
+  margin-left: 0.4rem;
 }
 
 .place .symbol {
