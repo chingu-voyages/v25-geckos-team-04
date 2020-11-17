@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { Temperature, Button } from './components'
 
 export const App: FC = () => {
   return (
