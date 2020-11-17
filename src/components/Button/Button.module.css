@@ -1,13 +1,14 @@
-.btnPrimary {
+.container {
   padding: 1rem 1.8rem;
-  background-color: var(--gray-2);
+  cursor: pointer;
   color: var(--color-primary-light);
   border: none;
 }
 
-.btnAccent {
-  padding: 1rem 1.8rem;
+.primary {
+  background-color: var(--gray-2);
+}
+
+.accent {
   background-color: var(--color-accent-light);
-  color: var(--color-primary-light);
-  border: none;
 }
