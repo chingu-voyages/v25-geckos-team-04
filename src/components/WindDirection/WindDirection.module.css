@@ -1,0 +1,21 @@
+.direction {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  background-color: var(--gray-2);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 16.44px;
+  font-weight: 500;
+  margin-left: 12px;
+}
