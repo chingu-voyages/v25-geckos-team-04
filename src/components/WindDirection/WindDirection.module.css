@@ -1,13 +1,13 @@
 .direction {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 2rem;
 }
 
 .icon {
   background-color: var(--gray-2);
-  width: 30px;
-  height: 30px;
+  width: 3rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,8 +15,8 @@
 }
 
 .text {
-  font-size: 14px;
-  line-height: 16.44px;
+  font-size: 1.4rem;
+  line-height: 1.644rem;
   font-weight: 500;
-  margin-left: 12px;
+  margin-left: 1.2rem;
 }
