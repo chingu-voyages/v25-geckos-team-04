@@ -2,13 +2,13 @@ import React, { FC } from 'react'
 import { format, isTomorrow } from 'date-fns'
 import styles from './Date.module.css'
 
-interface IDate {
-  date?: Date
+interface IDateComponent {
+  date: Date
 }
 
-export const Date: FC<IDate> = ({ date }) => {
+export const DateComponent: FC<IDateComponent> = ({ date }) => {
   const checkTomorrow = isTomorrow(date)
-  const formattedDate = format(data, 'EEE D MMM')
+  const formattedDate = format(date, 'eee d MMM')
 
   return (
     <div className={styles.date}>
