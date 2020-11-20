@@ -1,23 +1,23 @@
 .highlightcard {
-  max-width: 328px;
+  max-width: 32.8rem;
   width: 100%;
   background-color: var(--color-primary-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px 0;
+  padding: 3rem 0;
 }
 
 .value {
   font-weight: 700;
-  font-size: 64px;
-  line-height: 75.14px;
-  padding-right: 5px;
+  font-size: 6.4rem;
+  line-height: 7.514rem;
+  padding-right: 0.5rem;
 }
 
 .main {
   font-weight: 400;
-  font-size: 36px;
-  line-height: 42.26px;
-  padding: 5px 0;
+  font-size: 3.6rem;
+  line-height: 4.226rem;
+  padding: 0.5rem 0;
 }
