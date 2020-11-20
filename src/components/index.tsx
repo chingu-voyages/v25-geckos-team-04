@@ -1,5 +1,7 @@
+import { FiberPin } from '@material-ui/icons'
+
 export { IconButton } from './IconButton'
 export { WeatherIcon } from './WeatherIcon'
 export { WeatherTitle } from './WeatherTitle'
 export { CurrentPlace } from './CurrentPlace'
-export { HighlightCard } from './HighlightCard'
+export { HighlightList } from './HighlightList'
