@@ -3,12 +3,12 @@ import { format, isTomorrow } from 'date-fns'
 import styles from './Date.module.css'
 
 interface IDate {
-  date: Date
+  date?: Date
 }
 
 export const Date: FC<IDate> = ({ date }) => {
   const checkTomorrow = isTomorrow(date)
-  const formattedDate = format(date, 'MMM Do dddd')
+  const formattedDate = format(data, 'EEE D MMM')
 
   return (
     <div className={styles.date}>
