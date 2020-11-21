@@ -7,7 +7,7 @@ interface IHighlightList {
 
 export const HighlightList: FC<IHighlightList> = ({ children }) => {
   return (
-    <div className={styles.list__wrapper}>
+    <div className={styles.wrapper}>
       <h2 className={styles.heading}>Today's Highlights</h2>
       {children}
     </div>
