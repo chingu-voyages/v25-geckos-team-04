@@ -6,7 +6,7 @@ interface IVisibility {
   value: number
 }
 
-export const Visibility: FC<IVisibility> = ({ metric = 'celcius', value }) => {
+export const Visibility: FC<IVisibility> = ({ metric = 'celsius', value }) => {
   return (
     <>
       <div className={styles.title}>Visibility</div>
