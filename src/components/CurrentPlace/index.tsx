@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import PlaceIcon from '@material-ui/icons/Place';
+import PlaceIcon from '@material-ui/icons/Place'
 import styles from './CurrentPlace.module.css'
 
 interface ICurrentPlace {
