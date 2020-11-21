@@ -6,7 +6,7 @@ interface IWindStatus {
   value: number
 }
 
-export const WindStatus: FC<IWindStatus> = ({ metric = 'celcius', value }) => {
+export const WindStatus: FC<IWindStatus> = ({ metric = 'celsius', value }) => {
   return (
     <>
       <div className={styles.title}>Wind Status</div>
