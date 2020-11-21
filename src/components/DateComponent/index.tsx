@@ -4,11 +4,12 @@ import styles from './Date.module.css'
 
 interface IDateComponent {
   date: Date
+  formatString: string
 }
 
-export const DateComponent: FC<IDateComponent> = ({ date }) => {
+export const DateComponent: FC<IDateComponent> = ({ date, formatString }) => {
   const checkTomorrow = isTomorrow(date)
-  const formattedDate = format(date, 'eee d MMM')
+  const formattedDate = format(date, formatString)
 
   return (
     <div className={styles.date}>
