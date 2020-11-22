@@ -1,0 +1,31 @@
+.container {
+  background: transparent;
+  color: inherit;
+  border: 1px solid transparent;
+  font-size: 1.6rem;
+  font-weight: 500;
+  height: 6.4rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.container:hover {
+  border: 1px solid var(--gray-4);
+  cursor: pointer;
+}
+
+.container:active {
+  background-color: var(--gray-4);
+}
+
+.icon {
+  color: var(--gray-4);
+  display: none;
+}
+
+.container:hover .icon {
+  display: inline;
+}
