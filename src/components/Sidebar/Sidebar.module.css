@@ -1,0 +1,39 @@
+.container {
+  background-color: var(--color-primary-bg);
+  width: 32%;
+  height: 100%;
+  text-align: center;
+}
+
+.navigationHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 4.2rem;
+}
+
+.weatherIconContainer {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 37%;
+  align-items: center;
+  justify-content: center;
+}
+
+.weatherIconContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(../../assets/Cloud-background.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+}
+
+.weatherIcon {
+  height: 62%;
+}
