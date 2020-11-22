@@ -9,6 +9,11 @@
   flex-wrap: wrap;
   flex-basis: calc(25% - 1rem);
   box-sizing: border-box;
-  padding: 1.8rem;
+  padding: 1.8rem 2rem;
   text-align: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
 }

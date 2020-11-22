@@ -1,11 +1,9 @@
 .value {
   font-weight: 500;
-  line-height: 16.9rem;
 }
 
 .metric {
   font-weight: 500;
-  line-height: 5.6rem;
   color: var(--color-primary-dark);
 }
 
