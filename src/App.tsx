@@ -12,6 +12,7 @@ export const App: FC = () => {
         icon='heavyCloud'
         iconSize='small'
         temperatureDegree={15}
+        temperatureSize='small'
         metric="celsius"
       />
     </div>

@@ -35,6 +35,7 @@ export const WeatherCard: FC<IWeatherCard> = ({ date, formatString, icon, iconSi
         <DateComponent date={date} formatString={formatString} />
         <WeatherIcon size={iconSize} icon={icon} />
         <Temperature value={temperatureDegree} metric={metric} />
+        <Temperature value={temperatureHighest} metric={metric} size={temperatureSize} />
       </div>
     </div>
   )
