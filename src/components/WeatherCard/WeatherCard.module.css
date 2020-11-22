@@ -7,7 +7,7 @@
 .card {
   background-color: var(--color-primary-bg);
   flex-wrap: wrap;
-  flex-basis: calc(25% - 1rem);
+  flex-basis: calc(25% - 2.5rem);
   box-sizing: border-box;
   padding: 1.8rem 2rem;
   text-align: center;
@@ -16,4 +16,12 @@
 .footer {
   display: flex;
   justify-content: space-between;
+}
+
+.image {
+  margin-bottom: 3rem;
+}
+
+.date {
+  margin-bottom: 1rem;
 }

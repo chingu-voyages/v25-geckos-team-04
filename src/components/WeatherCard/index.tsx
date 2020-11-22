@@ -21,14 +21,17 @@ export const WeatherCard: FC<IWeatherCard> = ({
   return (
     <div className={styles.list}>
       <div className={styles.card}>
-        <DateComponent date={date} formatString={formatString} />
-        <WeatherIcon size={iconSize} icon={icon} />
+        <div className={styles.date}>
+          <DateComponent date={date} formatString={formatString} />
+        </div>
+        <div className={styles.image}>
+          <WeatherIcon size={iconSize} icon={icon} />
+        </div>
         <div className={styles.footer}>
           <Temperature value={temperatureHighest} metric={metric} size={temperatureSize} />
           <Temperature value={temperatureLowest} metric={metric} size={temperatureSize} />
         </div>
       </div>
- 
     </div>
   )
 }
