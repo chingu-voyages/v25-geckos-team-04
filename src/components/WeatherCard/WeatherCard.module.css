@@ -1,9 +1,3 @@
-.list{
-  display: flex;
-  justify-content: space-around;
-  margin: 0 -1rem;
-}
-
 .card {
   background-color: var(--color-primary-bg);
   flex-wrap: wrap;

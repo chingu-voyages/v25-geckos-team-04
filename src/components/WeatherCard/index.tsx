@@ -19,22 +19,19 @@ export const WeatherCard: FC<IWeatherCard> = ({
   date, formatString, icon, iconSize, temperatureHighest, temperatureLowest, metric, temperatureSize,
 }) => {
   return (
-    <div className={styles.list}>
-      <div className={styles.card}>
-        <div className={styles.date}>
-          <DateComponent date={date} formatString={formatString} />
+    <div className={styles.card}>
+      <div className={styles.date}>
+        <DateComponent date={date} formatString={formatString} />
+      </div>
+      <div className={styles.image}>
+        <WeatherIcon size={iconSize} icon={icon} />
+      </div>
+      <div className={styles.footer}>
+        <div>
+          <Temperature value={temperatureHighest} metric={metric} size={temperatureSize} />
         </div>
-        <div className={styles.image}>
-          <WeatherIcon size={iconSize} icon={icon} />
-        </div>
-        <div className={styles.footer}>
-          <div>
-            <Temperature value={temperatureHighest} metric={metric} size={temperatureSize} />
-          </div>
-          <div>
-            <Temperature value={temperatureLowest} metric={metric} size={temperatureSize} /> 
-          </div>
-          
+        <div>
+          <Temperature value={temperatureLowest} metric={metric} size={temperatureSize} /> 
         </div>
       </div>
     </div>
