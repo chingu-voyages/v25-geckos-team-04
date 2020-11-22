@@ -1,3 +1,13 @@
-.weatherCard {
-  background-color: var(--color-primary-light);
+.list{
+  display: flex;
+  justify-content: space-around;
+  margin: 0 -1rem;
+}
+
+.card {
+  background-color: var(--color-primary-bg);
+  flex-wrap: wrap;
+  flex-basis: calc(25% - 1rem);
+  box-sizing: border-box;
+  padding: 1rem;
 }

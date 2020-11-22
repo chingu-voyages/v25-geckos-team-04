@@ -15,10 +15,27 @@ interface IWeatherCard {
 
 export const WeatherCard: FC<IWeatherCard> = ({ date, formatString, icon, iconSize, temperatureDegree, metric }) => {
   return (
-    <div className={styles.weatherCard}>
-      <DateComponent date={date} formatString={formatString} />
-      <WeatherIcon size={iconSize} icon={icon} />
-      <Temperature value={temperatureDegree} metric={metric} />
+    <div className={styles.list}>
+      <div className={styles.card}>
+        <DateComponent date={date} formatString={formatString} />
+        <WeatherIcon size={iconSize} icon={icon} />
+        <Temperature value={temperatureDegree} metric={metric} />
+      </div>
+      <div className={styles.card}>
+        <DateComponent date={date} formatString={formatString} />
+        <WeatherIcon size={iconSize} icon={icon} />
+        <Temperature value={temperatureDegree} metric={metric} />
+      </div>
+      <div className={styles.card}>
+        <DateComponent date={date} formatString={formatString} />
+        <WeatherIcon size={iconSize} icon={icon} />
+        <Temperature value={temperatureDegree} metric={metric} />
+      </div>
+      <div className={styles.card}>
+        <DateComponent date={date} formatString={formatString} />
+        <WeatherIcon size={iconSize} icon={icon} />
+        <Temperature value={temperatureDegree} metric={metric} />
+      </div>
     </div>
   )
 }
