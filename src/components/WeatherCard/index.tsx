@@ -28,8 +28,13 @@ export const WeatherCard: FC<IWeatherCard> = ({
           <WeatherIcon size={iconSize} icon={icon} />
         </div>
         <div className={styles.footer}>
-          <Temperature value={temperatureHighest} metric={metric} size={temperatureSize} />
-          <Temperature value={temperatureLowest} metric={metric} size={temperatureSize} />
+          <div>
+            <Temperature value={temperatureHighest} metric={metric} size={temperatureSize} />
+          </div>
+          <div>
+            <Temperature value={temperatureLowest} metric={metric} size={temperatureSize} /> 
+          </div>
+          
         </div>
       </div>
     </div>
