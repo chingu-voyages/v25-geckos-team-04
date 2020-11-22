@@ -11,7 +11,8 @@ export const App: FC = () => {
         formatString='eee d MMM'
         icon='heavyCloud'
         iconSize='small'
-        temperatureDegree={15}
+        temperatureHighest={15}
+        temperatureLowest={15}
         temperatureSize='small'
         metric="celsius"
       />

@@ -9,34 +9,24 @@ interface IWeatherCard {
   formatString: string
   icon: 'clear' | 'hail' | 'heavyCloud' | 'heavyRain' | 'lightCloud' | 'lightRain' | 'shower' | 'sleet' | 'snow' | 'thunderstorm'
   iconSize?: 'small' | 'big'
-  temperatureDegree: number
+  temperatureHighest: number
+  temperatureLowest: number
   metric?: 'fahrenheit' | 'celsius'
+  temperatureSize?: 'small' | 'big'
 }
 
-export const WeatherCard: FC<IWeatherCard> = ({ date, formatString, icon, iconSize, temperatureDegree, metric }) => {
+export const WeatherCard: FC<IWeatherCard> = ({
+  date, formatString, icon, iconSize, temperatureHighest, temperatureLowest, metric, temperatureSize,
+}) => {
   return (
     <div className={styles.list}>
       <div className={styles.card}>
         <DateComponent date={date} formatString={formatString} />
         <WeatherIcon size={iconSize} icon={icon} />
-        <Temperature value={temperatureDegree} metric={metric} />
-      </div>
-      <div className={styles.card}>
-        <DateComponent date={date} formatString={formatString} />
-        <WeatherIcon size={iconSize} icon={icon} />
-        <Temperature value={temperatureDegree} metric={metric} />
-      </div>
-      <div className={styles.card}>
-        <DateComponent date={date} formatString={formatString} />
-        <WeatherIcon size={iconSize} icon={icon} />
-        <Temperature value={temperatureDegree} metric={metric} />
-      </div>
-      <div className={styles.card}>
-        <DateComponent date={date} formatString={formatString} />
-        <WeatherIcon size={iconSize} icon={icon} />
-        <Temperature value={temperatureDegree} metric={metric} />
         <Temperature value={temperatureHighest} metric={metric} size={temperatureSize} />
+        <Temperature value={temperatureLowest} metric={metric} size={temperatureSize} />
       </div>
+ 
     </div>
   )
 }
