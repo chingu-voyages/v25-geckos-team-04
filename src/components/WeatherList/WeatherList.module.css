@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 -2.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+  .list {
+    margin: 0 -1.2rem;
+  }
+}
