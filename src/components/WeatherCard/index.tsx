@@ -3,11 +3,12 @@ import styles from './WeatherCard.module.css'
 import { DateComponent } from '../DateComponent'
 import { Temperature } from '../Temperature'
 import { WeatherIcon } from '../WeatherIcon'
+import { IMAGES as WHEATHERICONS} from '../WeatherIcon/WeatherIcons'
 
 interface IWeatherCard {
   date: Date
   formatString: string
-  icon: 'clear' | 'hail' | 'heavyCloud' | 'heavyRain' | 'lightCloud' | 'lightRain' | 'shower' | 'sleet' | 'snow' | 'thunderstorm'
+  icon: keyof typeof WHEATHERICONS
   iconSize?: 'small' | 'big'
   temperatureHighest: number
   temperatureLowest: number
