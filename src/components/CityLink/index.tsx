@@ -3,14 +3,14 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import styles from './CityLink.module.css'
 
 interface ICityLink {
-  value: string
+  city: string
   onClick: (e: MouseEvent<HTMLElement>) => void
 }
 
-export const CityLink: FC<ICityLink> = ({ value, onClick }) => {
+export const CityLink: FC<ICityLink> = ({ city, onClick }) => {
   return (
     <button type="button" onClick={onClick} className={styles.container}>
-      {value}
+      {city}
       <span className={styles.icon}>
         <ChevronRightIcon fontSize="large" />
       </span>
@@ -18,4 +18,4 @@ export const CityLink: FC<ICityLink> = ({ value, onClick }) => {
   )
 }
 
-// <CityLink value='Barcelona' onClick={} />
+// <CityLink city='Barcelona' onClick={} />
