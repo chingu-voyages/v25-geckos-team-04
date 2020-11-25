@@ -1,4 +1,7 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: var(--color-primary-bg);
   width: 32%;
   height: 100%;
@@ -36,4 +39,8 @@
 
 .weatherIcon {
   height: 62%;
+}
+
+.footer {
+  padding: 2rem;
 }

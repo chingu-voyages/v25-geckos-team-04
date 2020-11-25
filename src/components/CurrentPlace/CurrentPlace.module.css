@@ -1,11 +1,11 @@
 .place {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  color: var(--gray-1);
 }
 
 .place .title {
   font-size: 1.8rem;
-  color: var(--gray-1);
   margin-left: 0.4rem;
 }
 
