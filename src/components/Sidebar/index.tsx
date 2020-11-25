@@ -12,7 +12,7 @@ export const Sidebar: FC = () => {
   return (
     <aside className={styles.container}>
       <div className={styles.navigationHeader}>
-        <Button onClick={() => console.log('Hello')}>Search for places</Button>
+        <Button onClick={(e) => e}>Search for places</Button>
         <IconButton name="gps" />
       </div>
       <div className={styles.weatherIconContainer}>
