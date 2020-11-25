@@ -22,8 +22,11 @@ export const Sidebar: FC = () => {
       </div>
       <Temperature value={15} />
       <WeatherTitle value="Shower" />
-      Today • <DateComponent date={new Date()} formatString="eee, dd MMM" />
-      <CurrentPlace place="Hong Kong" />
+      <div className={styles.footer}>
+        Today • <DateComponent date={new Date()} formatString="eee, dd MMM" />
+        <br />
+        <CurrentPlace place="Hong Kong" />
+      </div>
     </aside>
   )
 }

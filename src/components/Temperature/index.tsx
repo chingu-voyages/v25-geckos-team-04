@@ -13,7 +13,7 @@ export const Temperature: FC<ITemperature> = ({
   size,
 }) => {
   return (
-    <>
+    <span>
       <span
         className={`${styles.value} ${
           size === 'small' ? styles.small : styles.big
@@ -28,6 +28,6 @@ export const Temperature: FC<ITemperature> = ({
       >
         &deg;{metric === 'celsius' ? 'C' : 'F'}
       </span>
-    </>
+    </span>
   )
 }
