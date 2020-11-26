@@ -1,12 +1,24 @@
 .value {
-  font-size: 14.4rem;
   font-weight: 500;
-  line-height: 16.9rem;
 }
 
-.scale {
-  font-size: 4.8rem;
+.metric {
   font-weight: 500;
-  line-height: 5.6rem;
   color: var(--color-primary-dark);
+}
+
+.value.small {
+  font-size: 1.6rem;
+}
+
+.value.big {
+  font-size: 14.4rem;
+}
+
+.metric.small {
+  font-size: 1.6rem;
+}
+
+.metric.big {
+  font-size: 4.8rem;
 }

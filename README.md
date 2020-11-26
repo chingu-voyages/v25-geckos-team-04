@@ -29,4 +29,4 @@ When you create a commit, the code will be automatically formatted and type chec
 
 ## Demo
 
-The app will be hosting on Netlify and the link will follow after is has been hosted.
+We have deployed our app on Netlify and it can be found on the following link: [demo](https://sad-mclean-371064.netlify.app/)

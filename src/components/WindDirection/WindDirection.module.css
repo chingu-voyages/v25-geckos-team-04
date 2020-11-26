@@ -1,0 +1,22 @@
+.direction {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+
+.icon {
+  background-color: var(--gray-2);
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.text {
+  font-size: 1.4rem;
+  line-height: 1.644rem;
+  font-weight: 500;
+  margin-left: 1.2rem;
+}
