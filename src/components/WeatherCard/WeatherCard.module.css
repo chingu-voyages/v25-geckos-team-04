@@ -1,15 +1,7 @@
-.list{
-  display: flex;
-  justify-content: space-around;
-  margin: 0 -1rem;
-}
-
 .card {
   background-color: var(--color-primary-bg);
-  flex-wrap: wrap;
-  flex-basis: calc(25% - 2.5rem);
-  box-sizing: border-box;
   padding: 1.8rem 2rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
