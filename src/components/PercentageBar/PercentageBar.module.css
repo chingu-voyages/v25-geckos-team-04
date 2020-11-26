@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.percentages {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.bars {
+  position: relative;
+  margin: 0.2rem 0 0.4rem 0;
+}
+
+.bars .filled,
+.bars .empty {
+  height: 0.8rem;
+  border-radius: 8rem;
+}
+
+.bars .filled {
+  position: relative;
+  z-index: 2;
+  background-color: var(--yellow-1);
+}
+
+.bars .empty {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: var(--color-primary-light);
+}
+
+.percentageFooter {
+  align-self: flex-end;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
