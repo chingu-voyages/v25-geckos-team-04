@@ -17,3 +17,7 @@ body {
   color: #e7e7eb;
   background-color: var(--black);
 }
+
+* {
+  box-sizing: border-box;
+}
