@@ -16,9 +16,7 @@ export const Button: FC<IButton> = ({
     <button
       type="button"
       onClick={onClick}
-      className={`${styles.container} ${
-        color === 'primary' ? styles.primary : styles.accent
-      }`}
+      className={color === 'primary' ? styles.primary : styles.accent}
     >
       {children}
     </button>
