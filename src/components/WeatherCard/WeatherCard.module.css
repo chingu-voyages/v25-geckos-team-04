@@ -1,0 +1,19 @@
+.card {
+  background-color: var(--color-primary-bg);
+  padding: 1.8rem 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image {
+  margin-bottom: 3rem;
+}
+
+.date {
+  margin-bottom: 1rem;
+}

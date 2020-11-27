@@ -1,7 +1,7 @@
 .weatherTitle {
   font-weight: 600;
-  font-size: 36px;
-  line-height: 42.26px;
+  font-size: 3.6rem;
+  line-height: 4.226rem;
   text-align: center;
   color: var(--color-primary-dark);
 }
