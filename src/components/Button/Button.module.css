@@ -6,9 +6,11 @@
 }
 
 .primary {
+  composes: container;
   background-color: var(--gray-2);
 }
 
 .accent {
+  composes: container;
   background-color: var(--color-accent-light);
 }
