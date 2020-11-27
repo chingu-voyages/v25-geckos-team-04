@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
-import styles from './CityHistoryList.module.css'
+import styles from './CitySearchList.module.css'
 
-interface ICityHistoryList {
+interface ICitySearchList {
   children: React.ReactNode
 }
 
-export const CityHistoryList: FC<ICityHistoryList> = ({ children }) => {
+export const CitySearchList: FC<ICitySearchList> = ({ children }) => {
   return <div className={styles.list}>{children}</div>
 }
 
