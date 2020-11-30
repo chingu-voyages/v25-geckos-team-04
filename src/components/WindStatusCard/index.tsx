@@ -1,13 +1,16 @@
 import React, { FC } from 'react'
 import { HighlightCard } from '../HighlightCard'
-import styles from './WindStatus.module.css'
+import styles from './WindStatusCard.module.css'
 
-interface IWindStatus {
+interface IWindStatusCard {
   metric: 'celsius' | 'fahrenheit'
   value: number
 }
 
-export const WindStatus: FC<IWindStatus> = ({ metric = 'celsius', value }) => {
+export const WindStatusCard: FC<IWindStatusCard> = ({
+  metric = 'celsius',
+  value,
+}) => {
   return (
     <HighlightCard>
       <div className={styles.title}>Wind Status</div>
