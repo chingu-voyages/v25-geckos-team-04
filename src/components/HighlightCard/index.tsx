@@ -6,5 +6,5 @@ interface IHighlightCard {
 }
 
 export const HighlightCard: FC<IHighlightCard> = ({ children }) => {
-  return <div className={styles.highlightcard}>{children}</div>
+  return <div className={styles.highlightCard}>{children}</div>
 }
