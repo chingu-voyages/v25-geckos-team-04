@@ -1,13 +1,16 @@
 import React, { FC } from 'react'
 import { HighlightCard } from '../HighlightCard'
-import styles from './Visibility.module.css'
+import styles from './VisibilityCard.module.css'
 
-interface IVisibility {
+interface IVisibilityCard {
   metric: 'celsius' | 'fahrenheit'
   value: number
 }
 
-export const Visibility: FC<IVisibility> = ({ metric = 'celsius', value }) => {
+export const VisibilityCard: FC<IVisibilityCard> = ({
+  metric = 'celsius',
+  value,
+}) => {
   return (
     <HighlightCard>
       <div className={styles.title}>Visibility</div>

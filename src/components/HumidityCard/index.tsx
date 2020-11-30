@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 import { HighlightCard } from '../HighlightCard'
-import styles from './Humidity.module.css'
+import styles from './HumidityCard.module.css'
 
-interface IHumidity {
+interface IHumidityCard {
   value: number
 }
 
-export const Humidity: FC<IHumidity> = ({ value }) => {
+export const HumidityCard: FC<IHumidityCard> = ({ value }) => {
   return (
     <HighlightCard>
       <div className={styles.title}>Humidity</div>

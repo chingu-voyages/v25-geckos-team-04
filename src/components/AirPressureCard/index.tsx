@@ -1,12 +1,12 @@
 import React, { FC } from 'react'
 import { HighlightCard } from '../HighlightCard'
-import styles from './AirPressure.module.css'
+import styles from './AirPressureCard.module.css'
 
-interface IAirPressure {
+interface IAirPressureCard {
   value: number
 }
 
-export const AirPressure: FC<IAirPressure> = ({ value }) => {
+export const AirPressureCard: FC<IAirPressureCard> = ({ value }) => {
   return (
     <HighlightCard>
       <div className={styles.title}>Air Pressure</div>
