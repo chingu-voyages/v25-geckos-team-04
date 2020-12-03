@@ -3,6 +3,8 @@ import CloseIcon from '@material-ui/icons/Close'
 import styles from './SearchSidebar.module.css'
 import { Input } from '../Input'
 import { Button } from '../Button'
+import { CitySearchList } from '../CitySearchList'
+import { CityLink } from '../CityLink'
 
 export const SearchSidebar: FC = () => {
   return (
@@ -23,6 +25,12 @@ export const SearchSidebar: FC = () => {
           Search
         </Button>
       </div>
+      <CitySearchList>
+        <CityLink city="Barcelona" onClick={() => {}} />
+        <CityLink city="Barcelona" onClick={() => {}} />
+        <CityLink city="Barcelona" onClick={() => {}} />
+        <CityLink city="Barcelona" onClick={() => {}} />
+      </CitySearchList>
     </aside>
   )
 }
