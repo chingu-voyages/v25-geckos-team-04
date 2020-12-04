@@ -1,5 +1,15 @@
 @import 'variables.css';
 
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -10,4 +20,15 @@ body {
   line-height: 1.4;
   color: #e7e7eb;
   background-color: var(--black);
+}
+
+.appContainer {
+  display: flex;
+  height: 100%;
+}
+
+@media only screen and (max-width: 960px) {
+    .appContainer {
+        flex-direction: column;
+    }
 }
