@@ -18,6 +18,13 @@ body {
   background-color: var(--black);
 }
 
-* {
-  box-sizing: border-box;
+.appContainer {
+  display: flex;
+  height: 100%;
+}
+
+@media only screen and (max-width: 960px) {
+    .appContainer {
+        flex-direction: column;
+    }
 }
