@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { Sidebar } from './components/Sidebar'
 import { AppProvider } from './contexts/AppContext'
+import { MainPage } from './components/MainPage'
 
 export const App: FC = () => {
   // Will have appContainer class for now until page component is build to support responsive sidebar;
@@ -8,7 +9,7 @@ export const App: FC = () => {
     <div className="appContainer">
       <AppProvider>
         <Sidebar />
-        <h1>Weather App</h1>
+        <MainPage />
       </AppProvider>
     </div>
   )
