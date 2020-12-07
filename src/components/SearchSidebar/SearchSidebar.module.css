@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--color-primary-bg);
+  width: calc(32% - 4rem);
+  height: 100%;
+  text-align: center;
+  padding: 2rem;
+}
+
+.top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+.search {
+  display: flex;
+  gap: 1rem;
+}
