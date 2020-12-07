@@ -1,9 +1,8 @@
 .container {
-  /* width: 68%; */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  min-height: 100vh;
   margin: 0;
   padding: 1rem 2rem;
 }
@@ -13,6 +12,7 @@
   flex-direction: column;
   justify-content: space-around;
   width: 100%;
+  flex: 1;
   max-width: 80rem;
 }
 
@@ -29,4 +29,10 @@ footer {
   text-align: center;
   font-size: 1.2rem;
   color: var(--gray-1);
+}
+
+@media only screen and (max-width: 960px) {
+  .container {
+    width: auto;
+  }
 }

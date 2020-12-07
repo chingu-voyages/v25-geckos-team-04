@@ -77,7 +77,7 @@ export const MainPage: FC = () => {
           <VisibilityCard value={6.4} metric="celsius" />
           <AirPressureCard value={998} />
         </HighlightList>
-        <footer>Built by Stanley, Hana & Peter</footer>
+        <footer>Built by Stanley Thijssen, Hana Tokumoto & Peter Hanley</footer>
       </div>
     </main>
   )
