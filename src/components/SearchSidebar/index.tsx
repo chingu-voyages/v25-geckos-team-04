@@ -10,6 +10,7 @@ interface ISidebar {
   hideSearchSidebar: () => void
   citySearchString: string
   setCitySearchString: (arg0: string) => void
+  citySearchResults: { name: string; id: number; sys: { country: string } }[]
 }
 
 export const SearchSidebar: FC<ISidebar> = (props) => {
@@ -36,10 +37,16 @@ export const SearchSidebar: FC<ISidebar> = (props) => {
         </Button>
       </div>
       <CitySearchList>
-        <CityLink city="Barcelona" onClick={() => {}} />
-        <CityLink city="Barcelona" onClick={() => {}} />
-        <CityLink city="Barcelona" onClick={() => {}} />
-        <CityLink city="Barcelona" onClick={() => {}} />
+        {props.citySearchResults.map(
+          (city: { id: number; name: string; sys: { country: string } }) => (
+            <CityLink
+              key={city.id}
+              city={city.name}
+              country={city.sys.country}
+              onClick={() => {}}
+            />
+          ),
+        )}
       </CitySearchList>
     </aside>
   )
