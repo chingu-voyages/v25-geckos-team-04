@@ -2,14 +2,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react'
+import { Sidebar } from '../components/Sidebar'
+import { SearchSidebar } from '../components/SearchSidebar'
 
-export default function CurrentWeatherByCityContainer(props: {
-  children: React.ReactNode
-}) {
+export default function CurrentWeatherByCityContainer() {
   const apiKey = 'be56ce65affba360fcfb08d130f572b1'
 
-  const [citySearchString, setCitySearchString] = useState('London')
+  const [citySearchString, setCitySearchString] = useState('')
   const [citySearchResults, setCitySearchResults] = useState([])
+  const [showSearchSidebar, setShowSearchSidebar] = useState(false)
+
+  function toggleSearchSidebar() {
+    setShowSearchSidebar(!showSearchSidebar)
+  }
 
   useEffect(() => {
     const apiUrl = `https://api.openweathermap.org/data/2.5/find?q=${citySearchString}&units=metric&appid=${apiKey}`
@@ -50,5 +55,18 @@ export default function CurrentWeatherByCityContainer(props: {
     navigator.geolocation.getCurrentPosition(success)
   }, [])
 
-  return <>{props.children}</>
+  return (
+    <>
+      {showSearchSidebar ? null : (
+        <Sidebar showSearchSidebar={toggleSearchSidebar} />
+      )}
+      {showSearchSidebar ? (
+        <SearchSidebar
+          citySearchString={citySearchString}
+          setCitySearchString={setCitySearchString}
+          hideSearchSidebar={toggleSearchSidebar}
+        />
+      ) : null}
+    </>
+  )
 }
