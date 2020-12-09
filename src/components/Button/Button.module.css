@@ -14,3 +14,11 @@
   composes: container;
   background-color: var(--color-accent-light);
 }
+
+.primary:hover {
+  background-color: var(--black);
+}
+
+.accent:hover {
+  background-color: var(--gray-2);
+}
