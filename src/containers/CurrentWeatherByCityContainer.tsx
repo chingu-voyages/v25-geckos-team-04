@@ -22,11 +22,12 @@ export default function CurrentWeatherByCityContainer() {
     fetch(apiUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        setCitySearchResults(data)
+        if (data.cod === '200') {
+          setCitySearchResults(data.list)
+        }
       })
       .catch(console.error)
-  }, [citySearchString])
+  }, [citySearchString, setCitySearchResults])
 
   useEffect(() => {
     let lat
@@ -65,6 +66,7 @@ export default function CurrentWeatherByCityContainer() {
           citySearchString={citySearchString}
           setCitySearchString={setCitySearchString}
           hideSearchSidebar={toggleSearchSidebar}
+          citySearchResults={citySearchResults}
         />
       ) : null}
     </>
