@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import { Sidebar } from './components/Sidebar'
 import { AppProvider } from './contexts/AppContext'
 import { MainPage } from './components/MainPage'
 import CurrentWeatherByCityContainer from './containers/CurrentWeatherByCityContainer'
@@ -9,10 +8,8 @@ export const App: FC = () => {
   return (
     <div className="appContainer">
       <AppProvider>
-        <CurrentWeatherByCityContainer>
-          <Sidebar />
-          <MainPage />
-        </CurrentWeatherByCityContainer>
+        <CurrentWeatherByCityContainer />
+        <MainPage />
       </AppProvider>
     </div>
   )
