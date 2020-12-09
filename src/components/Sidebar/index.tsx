@@ -8,11 +8,15 @@ import { Temperature } from '../Temperature'
 import { DateComponent } from '../DateComponent'
 import { CurrentPlace } from '../CurrentPlace'
 
-export const Sidebar: FC = () => {
+interface ISidebar {
+  showSearchSidebar: () => void
+}
+
+export const Sidebar: FC<ISidebar> = (props) => {
   return (
     <aside className={styles.container}>
       <div className={styles.navigationHeader}>
-        <Button onClick={(e) => e}>Search for places</Button>
+        <Button onClick={props.showSearchSidebar}>Search for places</Button>
         <IconButton name="gps" />
       </div>
       <div className={styles.weatherIconContainer}>
