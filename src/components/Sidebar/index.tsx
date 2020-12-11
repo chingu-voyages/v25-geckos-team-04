@@ -7,11 +7,13 @@ import { WeatherTitle } from '../WeatherTitle'
 import { Temperature } from '../Temperature'
 import { DateComponent } from '../DateComponent'
 import { CurrentPlace } from '../CurrentPlace'
+import { Input } from '../Input'
 
 export const Sidebar: FC = () => {
   return (
     <aside className={styles.container}>
       <div className={styles.navigationHeader}>
+        <Input onChange={() => console.log('')} value="hello" />
         <Button onClick={(e) => e}>Search for places</Button>
         <IconButton name="gps" />
       </div>
