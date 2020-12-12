@@ -7,6 +7,7 @@ import { WeatherTitle } from '../WeatherTitle'
 import { Temperature } from '../Temperature'
 import { DateComponent } from '../DateComponent'
 import { CurrentPlace } from '../CurrentPlace'
+import { Input } from '../Input'
 
 interface ISidebar {
   showSearchSidebar: () => void
