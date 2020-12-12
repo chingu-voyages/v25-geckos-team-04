@@ -6,7 +6,6 @@
   box-sizing: border-box;
   border: 1px solid var(--color-primary-light);
   background-color: transparent;
-  border: none;
   color: var(--white);
   font-size: 1.6rem;
   line-height: 1.878rem;
