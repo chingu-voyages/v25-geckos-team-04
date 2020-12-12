@@ -9,12 +9,15 @@ import { DateComponent } from '../DateComponent'
 import { CurrentPlace } from '../CurrentPlace'
 import { Input } from '../Input'
 
-export const Sidebar: FC = () => {
+interface ISidebar {
+  showSearchSidebar: () => void
+}
+
+export const Sidebar: FC<ISidebar> = (props) => {
   return (
     <aside className={styles.container}>
       <div className={styles.navigationHeader}>
-        <Input onChange={() => console.log('')} value="hello" />
-        <Button onClick={(e) => e}>Search for places</Button>
+        <Button onClick={props.showSearchSidebar}>Search for places</Button>
         <IconButton name="gps" />
       </div>
       <div className={styles.weatherIconContainer}>

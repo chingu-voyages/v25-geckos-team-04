@@ -6,11 +6,22 @@ import { Button } from '../Button'
 import { CitySearchList } from '../CitySearchList'
 import { CityLink } from '../CityLink'
 
-export const SearchSidebar: FC = () => {
+interface ISidebar {
+  hideSearchSidebar: () => void
+  citySearchString: string
+  setCitySearchString: (arg0: string) => void
+  citySearchResults: { name: string; id: number; sys: { country: string } }[]
+}
+
+export const SearchSidebar: FC<ISidebar> = (props) => {
   return (
     <aside className={styles.container}>
       <div className={styles.top}>
-        <button className={styles.closeButton} type="button" onClick={(e) => e}>
+        <button
+          className={styles.closeButton}
+          type="button"
+          onClick={props.hideSearchSidebar}
+        >
           <CloseIcon fontSize="large" />
         </button>
       </div>
@@ -18,18 +29,24 @@ export const SearchSidebar: FC = () => {
         <Input
           isSearchInput={true}
           placeholder="search location"
-          value=""
-          onChange={() => {}}
+          value={props.citySearchString}
+          onChange={(e) => props.setCitySearchString(e.currentTarget.value)}
         />
         <Button color="accent" onClick={(e) => e}>
           Search
         </Button>
       </div>
       <CitySearchList>
-        <CityLink city="Barcelona" onClick={() => {}} />
-        <CityLink city="Barcelona" onClick={() => {}} />
-        <CityLink city="Barcelona" onClick={() => {}} />
-        <CityLink city="Barcelona" onClick={() => {}} />
+        {props.citySearchResults.map(
+          (city: { id: number; name: string; sys: { country: string } }) => (
+            <CityLink
+              key={city.id}
+              city={city.name}
+              country={city.sys.country}
+              onClick={() => {}}
+            />
+          ),
+        )}
       </CitySearchList>
     </aside>
   )

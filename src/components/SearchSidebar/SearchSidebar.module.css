@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 2rem;
   background-color: var(--color-primary-bg);
-  width: calc(32% - 4rem);
+  width: calc(32% - 5.5rem);
   height: 100%;
   text-align: center;
   padding: 2rem;
@@ -20,7 +20,22 @@
   color: inherit;
 }
 
+.closeButton:hover {
+  cursor: pointer;
+  color: var(--black);
+}
+
 .search {
   display: flex;
   gap: 1rem;
+}
+
+@media only screen and (max-width: 960px) {
+  .container {
+    width: 100%;
+  }
+
+  .top {
+    padding-right: 2rem;
+  }
 }
