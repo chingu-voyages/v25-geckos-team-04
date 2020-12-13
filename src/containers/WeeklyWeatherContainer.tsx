@@ -7,11 +7,6 @@ import {
 } from '../reducers/weather'
 import { WeatherActions } from '../actions/weather'
 
-export interface ICoords {
-  lon: number
-  lat: number
-}
-
 interface IInjectedWeeklyWeatherRenderProps {
   weeklyWeather: any[]
   isLoading: boolean
@@ -19,17 +14,19 @@ interface IInjectedWeeklyWeatherRenderProps {
   getWeeklyWeather: () => void
 }
 
-interface ICurrentWeeklyWeatherContainer {
+interface IWeeklyWeatherContainer {
   render: (props: IInjectedWeeklyWeatherRenderProps) => React.ReactElement
 }
 
-export const CurrentWeeklyWeatherContainer: FC<ICurrentWeeklyWeatherContainer> = ({
+export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
   render,
 }) => {
   const [weatherState, dispatch] = useReducer(
     weeklyWeatherReducer,
     weeklyWeatherReducerInitialState,
   )
+
+  const appContext = useContext(AppContext)
 
   const getWeeklyWeather = async () => {
     dispatch(WeatherActions.setIsLoading(true))
@@ -38,7 +35,8 @@ export const CurrentWeeklyWeatherContainer: FC<ICurrentWeeklyWeatherContainer> =
     try {
       const { data } = await openWeatherApi.get('/weather', {
         params: {
-          units: 'metric',
+          units: appContext.metric,
+          id: appContext.cityId,
         },
       })
 
