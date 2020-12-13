@@ -12,6 +12,7 @@ export interface ICoords {
 }
 
 interface IInjectedDailyWeatherRenderProps {
+  // eslint-disable-next-line
   dailyWeather: any[]
   isLoading: boolean
   hasError: boolean

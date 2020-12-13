@@ -9,7 +9,15 @@ import { WeatherActions } from '../actions/weather'
 
 interface IInjectedWeeklyWeatherRenderProps {
   // eslint-disable-next-line
-  weeklyWeather: any[]
+  weeklyWeather: {
+    current: {
+      humidity: number
+      pressure: number
+      wind_speed: number
+      wind_deg: number
+      visibility: number
+    }
+  }
   isLoading: boolean
   hasError: boolean
   getWeeklyWeather: () => void
@@ -39,7 +47,7 @@ export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
           units: appContext.metric,
           lat: appContext.latLon.lat,
           lon: appContext.latLon.lon,
-          exclude: 'current,minutely,hourly,alerts',
+          exclude: 'minutely,hourly,alerts',
         },
       })
 

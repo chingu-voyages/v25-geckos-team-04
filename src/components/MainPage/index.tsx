@@ -11,12 +11,20 @@ import { AirPressureCard } from '../AirPressureCard'
 
 interface IMainPage {
   // eslint-disable-next-line
-  weatherData: any[]
+  weatherData: {
+    current: {
+      humidity: number
+      pressure: number
+      wind_speed: number
+      wind_deg: number
+      visibility: number
+    }
+  }
 }
 
-export const MainPage: FC<IMainPage> = (props) => {
+export const MainPage: FC<IMainPage> = ({ weatherData }) => {
   // eslint-disable-next-line no-console
-  console.log(props.weatherData)
+  console.log(weatherData)
   return (
     <main className={styles.container}>
       <div className={styles.inner}>
@@ -77,10 +85,16 @@ export const MainPage: FC<IMainPage> = (props) => {
           />
         </WeatherList>
         <HighlightList>
-          <WindStatusCard metric="celsius" value={7} />
-          <HumidityCard value={84} />
-          <VisibilityCard value={6.4} metric="celsius" />
-          <AirPressureCard value={998} />
+          <WindStatusCard
+            metric="celsius"
+            value={weatherData.current.wind_speed}
+          />
+          <HumidityCard value={weatherData.current.humidity} />
+          <VisibilityCard
+            value={weatherData.current.visibility / 1000}
+            metric="celsius"
+          />
+          <AirPressureCard value={weatherData.current.pressure} />
         </HighlightList>
         <footer>Built by Stanley Thijssen, Hana Tokumoto & Peter Hanley</footer>
       </div>
