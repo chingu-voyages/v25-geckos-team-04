@@ -4,7 +4,7 @@ import {
   dailyWeatherReducerInitialState,
   dailyWeatherReducer,
 } from '../reducers/weather'
-import { DailyWeatherActions } from '../actions/weather'
+import { WeatherActions } from '../actions/weather'
 
 export interface ICoords {
   lon: number
@@ -31,8 +31,8 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
   )
 
   const getDailyWeather = async (coords: ICoords) => {
-    dispatch(DailyWeatherActions.setIsLoading(true))
-    dispatch(DailyWeatherActions.setHasError(false))
+    dispatch(WeatherActions.setIsLoading(true))
+    dispatch(WeatherActions.setHasError(false))
 
     try {
       const { data } = await openWeatherApi.get('/weather', {
@@ -43,11 +43,11 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
         },
       })
 
-      dispatch(DailyWeatherActions.setDailyWeather(data))
-      dispatch(DailyWeatherActions.setIsLoading(false))
+      dispatch(WeatherActions.setDailyWeather(data))
+      dispatch(WeatherActions.setIsLoading(false))
     } catch (e) {
-      dispatch(DailyWeatherActions.setIsLoading(false))
-      dispatch(DailyWeatherActions.setHasError(true))
+      dispatch(WeatherActions.setIsLoading(false))
+      dispatch(WeatherActions.setHasError(true))
     }
   }
 
@@ -55,8 +55,8 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
     let lat
     let lon
 
-    dispatch(DailyWeatherActions.setIsLoading(true))
-    dispatch(DailyWeatherActions.setHasError(false))
+    dispatch(WeatherActions.setIsLoading(true))
+    dispatch(WeatherActions.setHasError(false))
 
     function success(pos: { coords: { latitude: number; longitude: number } }) {
       const crd = pos.coords

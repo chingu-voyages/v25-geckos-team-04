@@ -1,4 +1,4 @@
-import { DailyWeatherActionTypes } from '../actions/weather'
+import { WeatherActionTypes } from '../actions/weather'
 import { IAction } from '../actions/types'
 
 interface IDailyWeatherReducerReducerState {
@@ -13,16 +13,44 @@ export const dailyWeatherReducerInitialState = {
   hasError: false,
 }
 
+interface IWeeklyWeatherReducerReducerState {
+  weeklyWeather: string[]
+  isLoading: boolean
+  hasError: boolean
+}
+
+export const weeklyWeatherReducerInitialState = {
+  weeklyWeather: [],
+  isLoading: false,
+  hasError: false,
+}
+
 export const dailyWeatherReducer = (
   state: IDailyWeatherReducerReducerState,
   action: IAction,
 ) => {
   switch (action.type) {
-    case DailyWeatherActionTypes.SET_DAILY_WEATHER:
+    case WeatherActionTypes.SET_DAILY_WEATHER:
       return { ...state, dailyWeather: action.payload.dailyWeather }
-    case DailyWeatherActionTypes.SET_IS_LOADING:
+    case WeatherActionTypes.SET_IS_LOADING:
       return { ...state, isLoading: action.payload.isLoading }
-    case DailyWeatherActionTypes.SET_HAS_ERROR:
+    case WeatherActionTypes.SET_HAS_ERROR:
+      return { ...state, hasError: action.payload.hasError }
+    default:
+      return state
+  }
+}
+
+export const weeklyWeatherReducer = (
+  state: IWeeklyWeatherReducerReducerState,
+  action: IAction,
+) => {
+  switch (action.type) {
+    case WeatherActionTypes.SET_WEEKLY_WEATHER:
+      return { ...state, weeklyWeather: action.payload.weeklyWeather }
+    case WeatherActionTypes.SET_IS_LOADING:
+      return { ...state, isLoading: action.payload.isLoading }
+    case WeatherActionTypes.SET_HAS_ERROR:
       return { ...state, hasError: action.payload.hasError }
     default:
       return state
