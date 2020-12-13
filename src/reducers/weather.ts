@@ -1,20 +1,29 @@
-import { WeatherAction, WeatherActionTypes } from '../actions/weather'
+import { DailyWeatherActionTypes } from '../actions/weather'
+import { IAction } from '../actions/types'
 
-interface ICurrentWeatherByCityReducerState {
-  currentWeather: string[]
+interface IDailyWeatherReducerReducerState {
+  dailyWeather: string[]
+  isLoading: boolean
+  hasError: boolean
 }
 
-export const currentWeatherByCityInitialState = {
-  currentWeather: [],
+export const dailyWeatherReducerInitialState = {
+  dailyWeather: [],
+  isLoading: false,
+  hasError: false,
 }
 
-export const currentWeatherByCityReducer = (
-  state: ICurrentWeatherByCityReducerState,
-  action: { type: WeatherAction; payload: {} },
+export const dailyWeatherReducer = (
+  state: IDailyWeatherReducerReducerState,
+  action: IAction,
 ) => {
   switch (action.type) {
-    case WeatherActionTypes.GET_CURRENT_WEATHER_BY_CITY:
-      return { ...state, currentWeather: [] }
+    case DailyWeatherActionTypes.SET_DAILY_WEATHER:
+      return { ...state, dailyWeather: action.payload.dailyWeather }
+    case DailyWeatherActionTypes.SET_IS_LOADING:
+      return { ...state, isLoading: action.payload.isLoading }
+    case DailyWeatherActionTypes.SET_HAS_ERROR:
+      return { ...state, hasError: action.payload.hasError }
     default:
       return state
   }

@@ -1,11 +1,39 @@
-import React, { useEffect } from 'react'
+import React, { FC, useEffect, useReducer } from 'react'
 import { openWeatherApi } from '../api'
+import {
+  dailyWeatherReducerInitialState,
+  dailyWeatherReducer,
+} from '../reducers/weather'
+import { DailyWeatherActions } from '../actions/weather'
 
-export const CurrentDailyWeatherContainer = () => {
-  const getCurrentCityByCoords = async (coords: {
-    lon: number
-    lat: number
-  }) => {
+export interface ICoords {
+  lon: number
+  lat: number
+}
+
+interface IInjectedDailyWeatherRenderProps {
+  dailyWeather: any[]
+  isLoading: boolean
+  hasError: boolean
+  getDailyWeather: (coords: ICoords) => void
+}
+
+interface ICurrentDailyWeatherContainer {
+  render: (props: IInjectedDailyWeatherRenderProps) => React.ReactElement
+}
+
+export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = ({
+  render,
+}) => {
+  const [weatherState, dispatch] = useReducer(
+    dailyWeatherReducer,
+    dailyWeatherReducerInitialState,
+  )
+
+  const getDailyWeather = async (coords: ICoords) => {
+    dispatch(DailyWeatherActions.setIsLoading(true))
+    dispatch(DailyWeatherActions.setHasError(false))
+
     try {
       const { data } = await openWeatherApi.get('/weather', {
         params: {
@@ -15,15 +43,20 @@ export const CurrentDailyWeatherContainer = () => {
         },
       })
 
-      console.log(data)
+      dispatch(DailyWeatherActions.setDailyWeather(data))
+      dispatch(DailyWeatherActions.setIsLoading(false))
     } catch (e) {
-      throw new Error(e)
+      dispatch(DailyWeatherActions.setIsLoading(false))
+      dispatch(DailyWeatherActions.setHasError(true))
     }
   }
 
   useEffect(() => {
     let lat
     let lon
+
+    dispatch(DailyWeatherActions.setIsLoading(true))
+    dispatch(DailyWeatherActions.setHasError(false))
 
     function success(pos: { coords: { latitude: number; longitude: number } }) {
       const crd = pos.coords
@@ -32,12 +65,19 @@ export const CurrentDailyWeatherContainer = () => {
       lon = crd.longitude
 
       if (lat && lon) {
-        getCurrentCityByCoords({ lat, lon })
+        getDailyWeather({ lat, lon })
       }
     }
 
     navigator.geolocation.getCurrentPosition(success)
   }, [])
 
-  return <div>RENDER Function here</div>
+  const { dailyWeather, isLoading, hasError } = weatherState
+
+  return render({
+    dailyWeather,
+    getDailyWeather,
+    isLoading,
+    hasError,
+  })
 }

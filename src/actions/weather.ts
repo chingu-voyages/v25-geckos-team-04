@@ -1,16 +1,34 @@
-export enum WeatherActionTypes {
-  'GET_CURRENT_WEATHER_BY_CITY' = 'GET_CURRENT_WEATHER_BY_CITY',
+export enum DailyWeatherActionTypes {
+  'SET_DAILY_WEATHER' = 'SET_DAILY_WEATHER',
+  'SET_IS_LOADING' = 'SET_IS_LOADING',
+  'SET_HAS_ERROR' = 'SET_HAS_ERROR',
 }
 
-export type WeatherAction = keyof typeof WeatherActionTypes
+export type WeatherAction = keyof typeof DailyWeatherActionTypes
 
-const getCurrentWeatherByCity = (currentWeather: []) => {
+const setDailyWeather = (dailyWeather: []) => {
   return {
-    payload: { currentWeather },
-    type: WeatherActionTypes.GET_CURRENT_WEATHER_BY_CITY,
+    payload: { dailyWeather },
+    type: DailyWeatherActionTypes.SET_DAILY_WEATHER,
   }
 }
 
-export const WeatherActions = {
-  getCurrentWeatherByCity,
+const setIsLoading = (isLoading: boolean) => {
+  return {
+    payload: { isLoading },
+    type: DailyWeatherActionTypes.SET_IS_LOADING,
+  }
+}
+
+const setHasError = (hasError: boolean) => {
+  return {
+    payload: { hasError },
+    type: DailyWeatherActionTypes.SET_HAS_ERROR,
+  }
+}
+
+export const DailyWeatherActions = {
+  setDailyWeather,
+  setIsLoading,
+  setHasError,
 }
