@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { AppProvider } from './contexts/AppContext'
-import { MainPage } from './components/MainPage'
+// import { MainPage } from './components/MainPage'
 import {
   CurrentDailyWeatherContainer,
   WeeklyWeatherContainer,
@@ -39,7 +39,7 @@ export const App: FC = () => {
               return <div>Something went wrong</div>
             }
 
-            return <MainPage />
+            return <>{JSON.stringify(weeklyWeather)}</>
           }}
         />
       </AppProvider>

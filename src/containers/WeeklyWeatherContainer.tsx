@@ -33,12 +33,17 @@ export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
     dispatch(WeatherActions.setHasError(false))
 
     try {
-      const { data } = await openWeatherApi.get('/weather', {
+      const { data } = await openWeatherApi.get('/onecall', {
         params: {
           units: appContext.metric,
-          id: appContext.cityId,
+          lat: appContext.latLon.lat,
+          lon: appContext.latLon.lon,
+          exclude: 'current,minutely,hourly,alerts',
         },
       })
+
+      // eslint-disable-next-line no-console
+      console.log(data)
 
       dispatch(WeatherActions.setWeeklyWeather(data))
       dispatch(WeatherActions.setIsLoading(false))

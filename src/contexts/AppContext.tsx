@@ -1,21 +1,21 @@
 import React, { FC, useState, createContext } from 'react'
 
-const defaultMetric = 'celsius'
-const defaultCityId = 0
+const defaultMetric = 'metric'
+const defaultLatLon = { lat: 0, lon: 0 }
 
 type AppContextType = {
   metric: string
   setMetric: (value: string) => void
-  cityId: number
-  setCityId: (value: number) => void
+  latLon: { lat: number; lon: number }
+  setLatLon: (value: { lat: number; lon: number }) => void
 }
 
 // eslint-disable-next-line max-len
 export const AppContext = createContext<AppContextType>({
   metric: defaultMetric,
   setMetric: () => {},
-  cityId: defaultCityId,
-  setCityId: () => {},
+  latLon: defaultLatLon,
+  setLatLon: () => {},
 })
 
 interface IAppProvider {
@@ -24,10 +24,10 @@ interface IAppProvider {
 
 export const AppProvider: FC<IAppProvider> = ({ children }) => {
   const [metric, setMetric] = useState(defaultMetric)
-  const [cityId, setCityId] = useState(defaultCityId)
+  const [latLon, setLatLon] = useState(defaultLatLon)
 
   return (
-    <AppContext.Provider value={{ metric, setMetric, cityId, setCityId }}>
+    <AppContext.Provider value={{ metric, setMetric, latLon, setLatLon }}>
       {children}
     </AppContext.Provider>
   )
