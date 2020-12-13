@@ -1,17 +1,22 @@
 import React, { FC } from 'react'
 import styles from './MainPage.module.css'
-
 import { IconButton } from '../IconButton'
 import { WeatherCard } from '../WeatherCard'
 import { WeatherList } from '../WeatherList'
-
 import { HighlightList } from '../HighlightList'
 import { WindStatusCard } from '../WindStatusCard'
 import { HumidityCard } from '../HumidityCard'
 import { VisibilityCard } from '../VisibilityCard'
 import { AirPressureCard } from '../AirPressureCard'
 
-export const MainPage: FC = () => {
+interface IMainPage {
+  // eslint-disable-next-line
+  weatherData: any[]
+}
+
+export const MainPage: FC<IMainPage> = (props) => {
+  // eslint-disable-next-line no-console
+  console.log(props.weatherData)
   return (
     <main className={styles.container}>
       <div className={styles.inner}>

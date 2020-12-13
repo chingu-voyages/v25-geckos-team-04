@@ -1,4 +1,4 @@
-import React, { FC, useReducer, useContext } from 'react'
+import React, { FC, useReducer, useContext, useEffect } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import { openWeatherApi } from '../api'
 import {
@@ -8,6 +8,7 @@ import {
 import { WeatherActions } from '../actions/weather'
 
 interface IInjectedWeeklyWeatherRenderProps {
+  // eslint-disable-next-line
   weeklyWeather: any[]
   isLoading: boolean
   hasError: boolean
@@ -42,9 +43,6 @@ export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
         },
       })
 
-      // eslint-disable-next-line no-console
-      console.log(data)
-
       dispatch(WeatherActions.setWeeklyWeather(data))
       dispatch(WeatherActions.setIsLoading(false))
     } catch (e) {
@@ -52,6 +50,14 @@ export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
       dispatch(WeatherActions.setHasError(true))
     }
   }
+
+  useEffect(() => {
+    dispatch(WeatherActions.setIsLoading(true))
+    dispatch(WeatherActions.setHasError(false))
+
+    getWeeklyWeather()
+    // eslint-disable-next-line
+  }, [])
 
   const { weeklyWeather, isLoading, hasError } = weatherState
 
