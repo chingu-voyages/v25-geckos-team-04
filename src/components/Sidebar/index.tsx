@@ -8,18 +8,20 @@ import { Temperature } from '../Temperature'
 import { DateComponent } from '../DateComponent'
 import { CurrentPlace } from '../CurrentPlace'
 import { AppContext } from '../../contexts/AppContext'
+import { IconMatch } from '../../utils/IconMatch'
 
 interface ISidebar {
   showSearchSidebar: () => void
   weatherData: {
     name: string
     main: { temp: number }
-    weather: { main: string }[]
+    weather: { main: string; id: number }[]
   }
 }
 
 export const Sidebar: FC<ISidebar> = ({ weatherData, showSearchSidebar }) => {
   const appContext = useContext(AppContext)
+
   return (
     <aside className={styles.container}>
       <div className={styles.navigationHeader}>
@@ -28,7 +30,10 @@ export const Sidebar: FC<ISidebar> = ({ weatherData, showSearchSidebar }) => {
       </div>
       <div className={styles.weatherIconContainer}>
         <div className={styles.weatherIcon}>
-          <WeatherIcon icon="shower" size="full" />
+          <WeatherIcon
+            icon={weatherData.weather && IconMatch(weatherData.weather[0].id)}
+            size="full"
+          />
         </div>
       </div>
       <Temperature

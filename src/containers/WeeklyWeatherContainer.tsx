@@ -5,7 +5,7 @@ import {
   weeklyWeatherReducerInitialState,
   weeklyWeatherReducer,
 } from '../reducers/weather'
-import { WeatherActions } from '../actions/weather'
+import { WeeklyWeatherActions } from '../actions/weather'
 
 interface IInjectedWeeklyWeatherRenderProps {
   // eslint-disable-next-line
@@ -17,7 +17,11 @@ interface IInjectedWeeklyWeatherRenderProps {
       wind_deg: number
       visibility: number
     }
-    daily: { dt: number; temp: { min: number; max: number } }[]
+    daily: {
+      dt: number
+      temp: { min: number; max: number }
+      weather: { id: number }[]
+    }[]
   }
   isLoading: boolean
   hasError: boolean
@@ -45,8 +49,8 @@ export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
     weatherUnits: 'metric' | 'imperial',
     weatherLatLon: { lat: number; lon: number },
   ) => {
-    dispatch(WeatherActions.setIsLoading(true))
-    dispatch(WeatherActions.setHasError(false))
+    dispatch(WeeklyWeatherActions.setWeeklyWeatherIsLoading(true))
+    dispatch(WeeklyWeatherActions.setWeeklyWeatherHasError(false))
 
     try {
       const { data } = await openWeatherApi.get('/onecall', {
@@ -57,17 +61,17 @@ export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
           exclude: 'minutely,hourly,alerts',
         },
       })
-      dispatch(WeatherActions.setWeeklyWeather(data))
-      dispatch(WeatherActions.setIsLoading(false))
+      dispatch(WeeklyWeatherActions.setWeeklyWeather(data))
+      dispatch(WeeklyWeatherActions.setWeeklyWeatherIsLoading(false))
     } catch (e) {
-      dispatch(WeatherActions.setIsLoading(false))
-      dispatch(WeatherActions.setHasError(true))
+      dispatch(WeeklyWeatherActions.setWeeklyWeatherIsLoading(false))
+      dispatch(WeeklyWeatherActions.setWeeklyWeatherHasError(true))
     }
   }
 
   useEffect(() => {
-    dispatch(WeatherActions.setIsLoading(true))
-    dispatch(WeatherActions.setHasError(false))
+    dispatch(WeeklyWeatherActions.setWeeklyWeatherIsLoading(true))
+    dispatch(WeeklyWeatherActions.setWeeklyWeatherHasError(false))
 
     getWeeklyWeather(appContext.units, appContext.latLon)
   }, [appContext.units, appContext.latLon])

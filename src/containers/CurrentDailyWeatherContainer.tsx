@@ -5,7 +5,7 @@ import {
   dailyWeatherReducerInitialState,
   dailyWeatherReducer,
 } from '../reducers/weather'
-import { WeatherActions } from '../actions/weather'
+import { DailyWeatherActions } from '../actions/weather'
 
 export interface ICoords {
   lon: number
@@ -17,7 +17,7 @@ interface IInjectedDailyWeatherRenderProps {
   dailyWeather: {
     name: string
     main: { temp: number }
-    weather: { main: string }[]
+    weather: { main: string; id: number }[]
   }
   isLoading: boolean
   hasError: boolean
@@ -45,8 +45,8 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
     coords: ICoords,
     weatherUnits: 'metric' | 'imperial',
   ) => {
-    dispatch(WeatherActions.setIsLoading(true))
-    dispatch(WeatherActions.setHasError(false))
+    dispatch(DailyWeatherActions.setDailyWeatherIsLoading(true))
+    dispatch(DailyWeatherActions.setDailyWeatherHasError(false))
 
     try {
       const { data } = await openWeatherApi.get('/weather', {
@@ -57,11 +57,11 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
         },
       })
 
-      dispatch(WeatherActions.setDailyWeather(data))
-      dispatch(WeatherActions.setIsLoading(false))
+      dispatch(DailyWeatherActions.setDailyWeather(data))
+      dispatch(DailyWeatherActions.setDailyWeatherIsLoading(false))
     } catch (e) {
-      dispatch(WeatherActions.setIsLoading(false))
-      dispatch(WeatherActions.setHasError(true))
+      dispatch(DailyWeatherActions.setDailyWeatherIsLoading(false))
+      dispatch(DailyWeatherActions.setDailyWeatherHasError(true))
     }
   }
 
@@ -69,8 +69,8 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
     let lat
     let lon
 
-    dispatch(WeatherActions.setIsLoading(true))
-    dispatch(WeatherActions.setHasError(false))
+    dispatch(DailyWeatherActions.setDailyWeatherIsLoading(true))
+    dispatch(DailyWeatherActions.setDailyWeatherHasError(false))
 
     function success(pos: { coords: { latitude: number; longitude: number } }) {
       const crd = pos.coords

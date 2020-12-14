@@ -9,6 +9,7 @@ import { WindStatusCard } from '../WindStatusCard'
 import { HumidityCard } from '../HumidityCard'
 import { VisibilityCard } from '../VisibilityCard'
 import { AirPressureCard } from '../AirPressureCard'
+import { IconMatch } from '../../utils/IconMatch'
 
 interface IMainPage {
   weatherData: {
@@ -19,7 +20,11 @@ interface IMainPage {
       wind_deg: number
       visibility: number
     }
-    daily: { dt: number; temp: { min: number; max: number } }[]
+    daily: {
+      dt: number
+      temp: { min: number; max: number }
+      weather: { id: number }[]
+    }[]
   }
 }
 
@@ -58,7 +63,9 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
               new Date(weatherData.daily ? weatherData.daily[1].dt * 1000 : 0)
             }
             formatString="eee d MMM"
-            icon="heavyCloud"
+            icon={
+              weatherData.daily && IconMatch(weatherData.daily[1].weather[0].id)
+            }
             iconSize="small"
             temperatureHighest={
               weatherData.daily && Math.round(weatherData.daily[1].temp.max)
@@ -74,7 +81,9 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
               new Date(weatherData.daily ? weatherData.daily[2].dt * 1000 : 0)
             }
             formatString="eee d MMM"
-            icon="heavyCloud"
+            icon={
+              weatherData.daily && IconMatch(weatherData.daily[2].weather[0].id)
+            }
             iconSize="small"
             temperatureHighest={
               weatherData.daily && Math.round(weatherData.daily[2].temp.max)
@@ -90,7 +99,9 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
               new Date(weatherData.daily ? weatherData.daily[3].dt * 1000 : 0)
             }
             formatString="eee d MMM"
-            icon="heavyCloud"
+            icon={
+              weatherData.daily && IconMatch(weatherData.daily[3].weather[0].id)
+            }
             iconSize="small"
             temperatureHighest={
               weatherData.daily && Math.round(weatherData.daily[3].temp.max)
@@ -106,7 +117,9 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
               new Date(weatherData.daily ? weatherData.daily[4].dt * 1000 : 0)
             }
             formatString="eee d MMM"
-            icon="heavyCloud"
+            icon={
+              weatherData.daily && IconMatch(weatherData.daily[4].weather[0].id)
+            }
             iconSize="small"
             temperatureHighest={
               weatherData.daily && Math.round(weatherData.daily[4].temp.max)
@@ -122,7 +135,9 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
               new Date(weatherData.daily ? weatherData.daily[5].dt * 1000 : 0)
             }
             formatString="eee d MMM"
-            icon="heavyCloud"
+            icon={
+              weatherData.daily && IconMatch(weatherData.daily[5].weather[0].id)
+            }
             iconSize="small"
             temperatureHighest={
               weatherData.daily && Math.round(weatherData.daily[5].temp.max)
