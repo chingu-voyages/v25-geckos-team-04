@@ -10,13 +10,18 @@ import { CurrentPlace } from '../CurrentPlace'
 
 interface ISidebar {
   showSearchSidebar: () => void
+  weatherData: {
+    name: string
+    main: { temp: number }
+    weather: { main: string }[]
+  }
 }
 
-export const Sidebar: FC<ISidebar> = (props) => {
+export const Sidebar: FC<ISidebar> = ({ weatherData, showSearchSidebar }) => {
   return (
     <aside className={styles.container}>
       <div className={styles.navigationHeader}>
-        <Button onClick={props.showSearchSidebar}>Search for places</Button>
+        <Button onClick={showSearchSidebar}>Search for places</Button>
         <IconButton name="gps" />
       </div>
       <div className={styles.weatherIconContainer}>
@@ -24,12 +29,16 @@ export const Sidebar: FC<ISidebar> = (props) => {
           <WeatherIcon icon="shower" size="full" />
         </div>
       </div>
-      <Temperature value={15} />
-      <WeatherTitle value="Shower" />
+      <Temperature
+        value={weatherData.main ? Math.round(weatherData.main.temp) : 0}
+      />
+      <WeatherTitle
+        value={weatherData.weather ? weatherData.weather[0].main : ''}
+      />
       <div className={styles.footer}>
         Today • <DateComponent date={new Date()} formatString="eee, dd MMM" />
         <br />
-        <CurrentPlace place="Hong Kong" />
+        <CurrentPlace place={weatherData.name ? weatherData.name : ''} />
       </div>
     </aside>
   )
