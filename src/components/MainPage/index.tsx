@@ -1,4 +1,5 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
+import { AppContext } from '../../contexts/AppContext'
 import styles from './MainPage.module.css'
 import { IconButton } from '../IconButton'
 import { WeatherCard } from '../WeatherCard'
@@ -19,12 +20,13 @@ interface IMainPage {
       wind_deg: number
       visibility: number
     }
+    daily: { dt: number; temp: { min: number; max: number } }[]
   }
 }
 
 export const MainPage: FC<IMainPage> = ({ weatherData }) => {
-  // eslint-disable-next-line no-console
-  console.log(weatherData)
+  const appContext = useContext(AppContext)
+
   return (
     <main className={styles.container}>
       <div className={styles.inner}>
@@ -34,52 +36,82 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
         </div>
         <WeatherList>
           <WeatherCard
-            date={new Date()}
+            date={
+              new Date(weatherData.daily ? weatherData.daily[1].dt * 1000 : 0)
+            }
             formatString="eee d MMM"
             icon="heavyCloud"
             iconSize="small"
-            temperatureHighest={15}
-            temperatureLowest={15}
+            temperatureHighest={
+              weatherData.daily && Math.round(weatherData.daily[1].temp.max)
+            }
+            temperatureLowest={
+              weatherData.daily && Math.round(weatherData.daily[1].temp.min)
+            }
             temperatureSize="small"
             metric="celsius"
           />
           <WeatherCard
-            date={new Date()}
+            date={
+              new Date(weatherData.daily ? weatherData.daily[2].dt * 1000 : 0)
+            }
             formatString="eee d MMM"
             icon="heavyCloud"
             iconSize="small"
-            temperatureHighest={15}
-            temperatureLowest={15}
+            temperatureHighest={
+              weatherData.daily && Math.round(weatherData.daily[2].temp.max)
+            }
+            temperatureLowest={
+              weatherData.daily && Math.round(weatherData.daily[2].temp.min)
+            }
             temperatureSize="small"
             metric="celsius"
           />
           <WeatherCard
-            date={new Date()}
+            date={
+              new Date(weatherData.daily ? weatherData.daily[3].dt * 1000 : 0)
+            }
             formatString="eee d MMM"
             icon="heavyCloud"
             iconSize="small"
-            temperatureHighest={15}
-            temperatureLowest={15}
+            temperatureHighest={
+              weatherData.daily && Math.round(weatherData.daily[3].temp.max)
+            }
+            temperatureLowest={
+              weatherData.daily && Math.round(weatherData.daily[3].temp.min)
+            }
             temperatureSize="small"
             metric="celsius"
           />
           <WeatherCard
-            date={new Date()}
+            date={
+              new Date(weatherData.daily ? weatherData.daily[4].dt * 1000 : 0)
+            }
             formatString="eee d MMM"
             icon="heavyCloud"
             iconSize="small"
-            temperatureHighest={15}
-            temperatureLowest={15}
+            temperatureHighest={
+              weatherData.daily && Math.round(weatherData.daily[4].temp.max)
+            }
+            temperatureLowest={
+              weatherData.daily && Math.round(weatherData.daily[4].temp.min)
+            }
             temperatureSize="small"
             metric="celsius"
           />
           <WeatherCard
-            date={new Date()}
+            date={
+              new Date(weatherData.daily ? weatherData.daily[5].dt * 1000 : 0)
+            }
             formatString="eee d MMM"
             icon="heavyCloud"
             iconSize="small"
-            temperatureHighest={15}
-            temperatureLowest={15}
+            temperatureHighest={
+              weatherData.daily && Math.round(weatherData.daily[5].temp.max)
+            }
+            temperatureLowest={
+              weatherData.daily && Math.round(weatherData.daily[5].temp.min)
+            }
             temperatureSize="small"
             metric="celsius"
           />
@@ -87,14 +119,22 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
         <HighlightList>
           <WindStatusCard
             metric="celsius"
-            value={weatherData.current.wind_speed}
+            value={weatherData.current ? weatherData.current.wind_speed : 0}
+            degrees={weatherData.current ? weatherData.current.wind_deg : 0}
           />
-          <HumidityCard value={weatherData.current.humidity} />
+          <HumidityCard
+            value={weatherData.current ? weatherData.current.humidity : 0}
+            percentage={weatherData.current ? weatherData.current.humidity : 0}
+          />
           <VisibilityCard
-            value={weatherData.current.visibility / 1000}
+            value={
+              weatherData.current ? weatherData.current.visibility / 1000 : 0
+            }
             metric="celsius"
           />
-          <AirPressureCard value={weatherData.current.pressure} />
+          <AirPressureCard
+            value={weatherData.current ? weatherData.current.pressure : 0}
+          />
         </HighlightList>
         <footer>Built by Stanley Thijssen, Hana Tokumoto & Peter Hanley</footer>
       </div>
