@@ -39,14 +39,14 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
         <div className={styles.metricButtons}>
           <IconButton
             name="celsius"
-            on={true}
+            on={appContext.units === 'metric'}
             onClick={() => {
               appContext.setUnits('metric')
             }}
           />
           <IconButton
             name="fahrenheit"
-            on={false}
+            on={appContext.units === 'imperial'}
             onClick={() => {
               appContext.setUnits('imperial')
             }}
