@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useReducer } from 'react'
+import React, { FC, useEffect, useReducer, useContext } from 'react'
+import { AppContext } from '../contexts/AppContext'
 import { openWeatherApi } from '../api'
 import {
   dailyWeatherReducerInitialState,
@@ -13,7 +14,11 @@ export interface ICoords {
 
 interface IInjectedDailyWeatherRenderProps {
   // eslint-disable-next-line
-  dailyWeather: any[]
+  dailyWeather: {
+    name: string
+    main: { temp: number }
+    weather: { main: string }[]
+  }
   isLoading: boolean
   hasError: boolean
   getDailyWeather: (coords: ICoords) => void
@@ -30,6 +35,8 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
     dailyWeatherReducer,
     dailyWeatherReducerInitialState,
   )
+
+  const appContext = useContext(AppContext)
 
   const getDailyWeather = async (coords: ICoords) => {
     dispatch(WeatherActions.setIsLoading(true))
@@ -66,11 +73,13 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
       lon = crd.longitude
 
       if (lat && lon) {
+        appContext.setLatLon({ lat, lon })
         getDailyWeather({ lat, lon })
       }
     }
 
     navigator.geolocation.getCurrentPosition(success)
+    // eslint-disable-next-line
   }, [])
 
   const { dailyWeather, isLoading, hasError } = weatherState
