@@ -11,7 +11,9 @@
 .navigationHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 4.2rem;
+  gap: 2rem;
 }
 
 .weatherIconContainer {
