@@ -1,19 +1,18 @@
 import React, { FC, useState, createContext } from 'react'
 
-const defaultMetric = 'metric'
+const defaultUnit = 'metric'
 const defaultLatLon = { lat: 0, lon: 0 }
 
 type AppContextType = {
-  metric: string
-  setMetric: (value: string) => void
+  units: 'metric' | 'imperial'
+  setUnits: (value: 'metric' | 'imperial') => void
   latLon: { lat: number; lon: number }
   setLatLon: (value: { lat: number; lon: number }) => void
 }
 
-// eslint-disable-next-line max-len
 export const AppContext = createContext<AppContextType>({
-  metric: defaultMetric,
-  setMetric: () => {},
+  units: defaultUnit,
+  setUnits: () => {},
   latLon: defaultLatLon,
   setLatLon: () => {},
 })
@@ -23,11 +22,13 @@ interface IAppProvider {
 }
 
 export const AppProvider: FC<IAppProvider> = ({ children }) => {
-  const [metric, setMetric] = useState(defaultMetric)
+  const [units, setUnits] = useState(defaultUnit)
   const [latLon, setLatLon] = useState(defaultLatLon)
 
   return (
-    <AppContext.Provider value={{ metric, setMetric, latLon, setLatLon }}>
+    <AppContext.Provider
+      value={{ units: 'metric', setUnits, latLon, setLatLon }}
+    >
       {children}
     </AppContext.Provider>
   )
