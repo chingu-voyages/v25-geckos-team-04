@@ -17,10 +17,14 @@ interface IInjectedWeeklyWeatherRenderProps {
       wind_deg: number
       visibility: number
     }
+    daily: { dt: number; temp: { min: number; max: number } }[]
   }
   isLoading: boolean
   hasError: boolean
-  getWeeklyWeather: () => void
+  getWeeklyWeather: (
+    weatherUnits: string,
+    weatherLatLon: { lat: number; lon: number },
+  ) => void
 }
 
 interface IWeeklyWeatherContainer {
@@ -37,20 +41,22 @@ export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
 
   const appContext = useContext(AppContext)
 
-  const getWeeklyWeather = async () => {
+  const getWeeklyWeather = async (
+    weatherUnits: string,
+    weatherLatLon: { lat: number; lon: number },
+  ) => {
     dispatch(WeatherActions.setIsLoading(true))
     dispatch(WeatherActions.setHasError(false))
 
     try {
       const { data } = await openWeatherApi.get('/onecall', {
         params: {
-          units: appContext.metric,
-          lat: appContext.latLon.lat,
-          lon: appContext.latLon.lon,
+          units: weatherUnits,
+          lat: weatherLatLon.lat,
+          lon: weatherLatLon.lon,
           exclude: 'minutely,hourly,alerts',
         },
       })
-
       dispatch(WeatherActions.setWeeklyWeather(data))
       dispatch(WeatherActions.setIsLoading(false))
     } catch (e) {
@@ -63,9 +69,8 @@ export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
     dispatch(WeatherActions.setIsLoading(true))
     dispatch(WeatherActions.setHasError(false))
 
-    getWeeklyWeather()
-    // eslint-disable-next-line
-  }, [])
+    getWeeklyWeather(appContext.metric, appContext.latLon)
+  }, [appContext.metric, appContext.latLon])
 
   const { weeklyWeather, isLoading, hasError } = weatherState
 
