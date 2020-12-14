@@ -6,11 +6,13 @@ import styles from './WindStatusCard.module.css'
 interface IWindStatusCard {
   metric: 'celsius' | 'fahrenheit'
   value: number
+  degrees: number
 }
 
 export const WindStatusCard: FC<IWindStatusCard> = ({
   metric = 'celsius',
   value,
+  degrees,
 }) => {
   return (
     <HighlightCard>
@@ -19,7 +21,7 @@ export const WindStatusCard: FC<IWindStatusCard> = ({
         <span className={styles.value}>{value}</span>
         {metric === 'celsius' ? 'km/h' : 'mph'}
       </div>
-      <WindDirection degrees={180} />
+      <WindDirection degrees={degrees} />
     </HighlightCard>
   )
 }
