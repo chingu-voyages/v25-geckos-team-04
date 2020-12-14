@@ -21,7 +21,12 @@ export const App: FC = () => {
               return <div>Something went wrong</div>
             }
 
-            return <Sidebar showSearchSidebar={() => {}} />
+            return (
+              <Sidebar
+                weatherData={dailyWeather}
+                showSearchSidebar={() => {}}
+              />
+            )
           }}
         />
         <WeeklyWeatherContainer
