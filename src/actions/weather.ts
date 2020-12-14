@@ -1,43 +1,69 @@
-export enum WeatherActionTypes {
+export enum DailyWeatherActionTypes {
   'SET_DAILY_WEATHER' = 'SET_DAILY_WEATHER',
-  'SET_WEEKLY_WEATHER' = 'SET_WEEKLY_WEATHER',
-  'SET_IS_LOADING' = 'SET_IS_LOADING',
-  'SET_HAS_ERROR' = 'SET_HAS_ERROR',
+  'SET_DAILY_WEATHER_IS_LOADING' = 'SET_DAILY_WEATHER_IS_LOADING',
+  'SET_DAILY_WEATHER_HAS_ERROR' = 'SET_DAILY_WEATHER_HAS_ERROR',
 }
 
-export type WeatherAction = keyof typeof WeatherActionTypes
+export enum WeeklyWeatherActionTypes {
+  'SET_WEEKLY_WEATHER' = 'SET_WEEKLY_WEATHER',
+  'SET_WEEKLY_WEATHER_IS_LOADING' = 'SET_WEEKLY_WEATHER_IS_LOADING',
+  'SET_WEEKLY_WEATHER_HAS_ERROR' = 'SET_WEEKLY_WEATHER_HAS_ERROR',
+}
+
+export type DailyWeatherAction = keyof typeof DailyWeatherActionTypes
+
+export type WeeklyWeatherAction = keyof typeof WeeklyWeatherActionTypes
 
 const setDailyWeather = (dailyWeather: []) => {
   return {
     payload: { dailyWeather },
-    type: WeatherActionTypes.SET_DAILY_WEATHER,
+    type: DailyWeatherActionTypes.SET_DAILY_WEATHER,
   }
 }
 
 const setWeeklyWeather = (weeklyWeather: []) => {
   return {
     payload: { weeklyWeather },
-    type: WeatherActionTypes.SET_WEEKLY_WEATHER,
+    type: WeeklyWeatherActionTypes.SET_WEEKLY_WEATHER,
   }
 }
 
-const setIsLoading = (isLoading: boolean) => {
+const setDailyWeatherIsLoading = (isLoading: boolean) => {
   return {
     payload: { isLoading },
-    type: WeatherActionTypes.SET_IS_LOADING,
+    type: DailyWeatherActionTypes.SET_DAILY_WEATHER_IS_LOADING,
   }
 }
 
-const setHasError = (hasError: boolean) => {
+const setWeeklyWeatherIsLoading = (isLoading: boolean) => {
+  return {
+    payload: { isLoading },
+    type: WeeklyWeatherActionTypes.SET_WEEKLY_WEATHER_IS_LOADING,
+  }
+}
+
+const setDailyWeatherHasError = (hasError: boolean) => {
   return {
     payload: { hasError },
-    type: WeatherActionTypes.SET_HAS_ERROR,
+    type: DailyWeatherActionTypes.SET_DAILY_WEATHER_HAS_ERROR,
   }
 }
 
-export const WeatherActions = {
+const setWeeklyWeatherHasError = (hasError: boolean) => {
+  return {
+    payload: { hasError },
+    type: WeeklyWeatherActionTypes.SET_WEEKLY_WEATHER_HAS_ERROR,
+  }
+}
+
+export const DailyWeatherActions = {
   setDailyWeather,
+  setDailyWeatherIsLoading,
+  setDailyWeatherHasError,
+}
+
+export const WeeklyWeatherActions = {
   setWeeklyWeather,
-  setIsLoading,
-  setHasError,
+  setWeeklyWeatherIsLoading,
+  setWeeklyWeatherHasError,
 }
