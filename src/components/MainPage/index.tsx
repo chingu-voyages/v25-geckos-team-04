@@ -137,7 +137,11 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
         <HighlightList>
           <WindStatusCard
             units={appContext.units}
-            value={weatherData.current ? weatherData.current.wind_speed : 0}
+            value={
+              weatherData.current
+                ? Math.round(weatherData.current.wind_speed)
+                : 0
+            }
             degrees={weatherData.current ? weatherData.current.wind_deg : 0}
           />
           <HumidityCard
