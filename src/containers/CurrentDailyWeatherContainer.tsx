@@ -21,7 +21,10 @@ interface IInjectedDailyWeatherRenderProps {
   }
   isLoading: boolean
   hasError: boolean
-  getDailyWeather: (coords: ICoords) => void
+  getDailyWeather: (
+    coords: ICoords,
+    weatherUnits: 'metric' | 'imperial',
+  ) => void
 }
 
 interface ICurrentDailyWeatherContainer {
@@ -38,7 +41,10 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
 
   const appContext = useContext(AppContext)
 
-  const getDailyWeather = async (coords: ICoords) => {
+  const getDailyWeather = async (
+    coords: ICoords,
+    weatherUnits: 'metric' | 'imperial',
+  ) => {
     dispatch(WeatherActions.setIsLoading(true))
     dispatch(WeatherActions.setHasError(false))
 
@@ -47,7 +53,7 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
         params: {
           lat: coords.lat,
           lon: coords.lon,
-          units: 'metric',
+          units: weatherUnits,
         },
       })
 
@@ -74,7 +80,7 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
 
       if (lat && lon) {
         appContext.setLatLon({ lat, lon })
-        getDailyWeather({ lat, lon })
+        getDailyWeather({ lat, lon }, appContext.units)
       }
     }
 
