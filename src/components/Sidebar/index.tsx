@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import styles from './Sidebar.module.css'
 import { Button } from '../Button'
 import { IconButton } from '../IconButton'
@@ -7,6 +7,7 @@ import { WeatherTitle } from '../WeatherTitle'
 import { Temperature } from '../Temperature'
 import { DateComponent } from '../DateComponent'
 import { CurrentPlace } from '../CurrentPlace'
+import { AppContext } from '../../contexts/AppContext'
 
 interface ISidebar {
   showSearchSidebar: () => void
@@ -18,6 +19,7 @@ interface ISidebar {
 }
 
 export const Sidebar: FC<ISidebar> = ({ weatherData, showSearchSidebar }) => {
+  const appContext = useContext(AppContext)
   return (
     <aside className={styles.container}>
       <div className={styles.navigationHeader}>
@@ -31,6 +33,7 @@ export const Sidebar: FC<ISidebar> = ({ weatherData, showSearchSidebar }) => {
       </div>
       <Temperature
         value={weatherData.main ? Math.round(weatherData.main.temp) : 0}
+        units={appContext.units}
       />
       <WeatherTitle
         value={weatherData.weather ? weatherData.weather[0].main : ''}
