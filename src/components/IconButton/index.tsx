@@ -5,6 +5,7 @@ import styles from './IconButton.module.css'
 interface IIconButton {
   name: 'gps' | 'celsius' | 'fahrenheit'
   on?: boolean
+  onClick?: () => void
 }
 
 export const IconButton: FC<IIconButton> = ({ name, on }) => {
