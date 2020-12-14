@@ -12,7 +12,7 @@ interface IWeatherCard {
   iconSize?: 'small' | 'big'
   temperatureHighest: number
   temperatureLowest: number
-  metric?: 'fahrenheit' | 'celsius'
+  units: 'imperial' | 'metric'
   temperatureSize?: 'small' | 'big'
 }
 
@@ -23,7 +23,7 @@ export const WeatherCard: FC<IWeatherCard> = ({
   iconSize,
   temperatureHighest,
   temperatureLowest,
-  metric,
+  units,
   temperatureSize,
 }) => {
   return (
@@ -38,14 +38,14 @@ export const WeatherCard: FC<IWeatherCard> = ({
         <div>
           <Temperature
             value={temperatureHighest}
-            metric={metric}
+            units={units}
             size={temperatureSize}
           />
         </div>
         <div>
           <Temperature
             value={temperatureLowest}
-            metric={metric}
+            units={units}
             size={temperatureSize}
           />
         </div>
