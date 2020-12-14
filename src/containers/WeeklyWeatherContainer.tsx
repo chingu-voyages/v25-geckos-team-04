@@ -22,7 +22,7 @@ interface IInjectedWeeklyWeatherRenderProps {
   isLoading: boolean
   hasError: boolean
   getWeeklyWeather: (
-    weatherUnits: string,
+    weatherUnits: 'metric' | 'imperial',
     weatherLatLon: { lat: number; lon: number },
   ) => void
 }
@@ -42,7 +42,7 @@ export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
   const appContext = useContext(AppContext)
 
   const getWeeklyWeather = async (
-    weatherUnits: string,
+    weatherUnits: 'metric' | 'imperial',
     weatherLatLon: { lat: number; lon: number },
   ) => {
     dispatch(WeatherActions.setIsLoading(true))
@@ -69,8 +69,8 @@ export const WeeklyWeatherContainer: FC<IWeeklyWeatherContainer> = ({
     dispatch(WeatherActions.setIsLoading(true))
     dispatch(WeatherActions.setHasError(false))
 
-    getWeeklyWeather(appContext.metric, appContext.latLon)
-  }, [appContext.metric, appContext.latLon])
+    getWeeklyWeather(appContext.units, appContext.latLon)
+  }, [appContext.units, appContext.latLon])
 
   const { weeklyWeather, isLoading, hasError } = weatherState
 
