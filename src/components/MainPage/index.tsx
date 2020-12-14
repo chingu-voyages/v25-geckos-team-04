@@ -11,7 +11,6 @@ import { VisibilityCard } from '../VisibilityCard'
 import { AirPressureCard } from '../AirPressureCard'
 
 interface IMainPage {
-  // eslint-disable-next-line
   weatherData: {
     current: {
       humidity: number
@@ -27,12 +26,31 @@ interface IMainPage {
 export const MainPage: FC<IMainPage> = ({ weatherData }) => {
   const appContext = useContext(AppContext)
 
+  const metricVisibility = weatherData.current
+    ? weatherData.current.visibility / 1000
+    : 0
+  const imperialVisibility = weatherData.current
+    ? Math.round(weatherData.current.visibility / 1609)
+    : 0
+
   return (
     <main className={styles.container}>
       <div className={styles.inner}>
         <div className={styles.metricButtons}>
-          <IconButton name="celsius" on={true} />
-          <IconButton name="fahrenheit" on={false} />
+          <IconButton
+            name="celsius"
+            on={true}
+            onClick={() => {
+              appContext.setUnits('metric')
+            }}
+          />
+          <IconButton
+            name="fahrenheit"
+            on={false}
+            onClick={() => {
+              appContext.setUnits('imperial')
+            }}
+          />
         </div>
         <WeatherList>
           <WeatherCard
@@ -49,7 +67,7 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
               weatherData.daily && Math.round(weatherData.daily[1].temp.min)
             }
             temperatureSize="small"
-            metric="celsius"
+            units={appContext.units}
           />
           <WeatherCard
             date={
@@ -65,7 +83,7 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
               weatherData.daily && Math.round(weatherData.daily[2].temp.min)
             }
             temperatureSize="small"
-            metric="celsius"
+            units={appContext.units}
           />
           <WeatherCard
             date={
@@ -81,7 +99,7 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
               weatherData.daily && Math.round(weatherData.daily[3].temp.min)
             }
             temperatureSize="small"
-            metric="celsius"
+            units={appContext.units}
           />
           <WeatherCard
             date={
@@ -97,7 +115,7 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
               weatherData.daily && Math.round(weatherData.daily[4].temp.min)
             }
             temperatureSize="small"
-            metric="celsius"
+            units={appContext.units}
           />
           <WeatherCard
             date={
@@ -113,12 +131,12 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
               weatherData.daily && Math.round(weatherData.daily[5].temp.min)
             }
             temperatureSize="small"
-            metric="celsius"
+            units={appContext.units}
           />
         </WeatherList>
         <HighlightList>
           <WindStatusCard
-            metric="celsius"
+            units={appContext.units}
             value={weatherData.current ? weatherData.current.wind_speed : 0}
             degrees={weatherData.current ? weatherData.current.wind_deg : 0}
           />
@@ -128,9 +146,11 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
           />
           <VisibilityCard
             value={
-              weatherData.current ? weatherData.current.visibility / 1000 : 0
+              appContext.units === 'metric'
+                ? metricVisibility
+                : imperialVisibility
             }
-            metric="celsius"
+            units={appContext.units}
           />
           <AirPressureCard
             value={weatherData.current ? weatherData.current.pressure : 0}
