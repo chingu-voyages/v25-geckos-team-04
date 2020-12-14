@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import CloseIcon from '@material-ui/icons/Close'
 import styles from './SearchSidebar.module.css'
 import { Input } from '../Input'
@@ -6,14 +6,14 @@ import { Button } from '../Button'
 import { CitySearchList } from '../CitySearchList'
 import { CityLink } from '../CityLink'
 
-interface ISidebar {
+interface ISearchSidebar {
   hideSearchSidebar: () => void
   citySearchString: string
   setCitySearchString: (arg0: string) => void
   citySearchResults: { name: string; id: number; sys: { country: string } }[]
 }
 
-export const SearchSidebar: FC<ISidebar> = (props) => {
+export const SearchSidebar: FC<ISearchSidebar> = (props) => {
   return (
     <aside className={styles.container}>
       <div className={styles.top}>
