@@ -10,9 +10,15 @@ export enum WeeklyWeatherActionTypes {
   'SET_WEEKLY_WEATHER_HAS_ERROR' = 'SET_WEEKLY_WEATHER_HAS_ERROR',
 }
 
-export type DailyWeatherAction = keyof typeof DailyWeatherActionTypes
+export enum SearchWeatherActionTypes {
+  'SET_SEARCH_WEATHER' = 'SET_SEARCH_WEATHER',
+  'SET_SEARCH_WEATHER_IS_LOADING' = 'SET_SEARCH_WEATHER_IS_LOADING',
+  'SET_SEARCH_WEATHER_HAS_ERROR' = 'SET_SEARCH_WEATHER_HAS_ERROR',
+}
 
+export type DailyWeatherAction = keyof typeof DailyWeatherActionTypes
 export type WeeklyWeatherAction = keyof typeof WeeklyWeatherActionTypes
+export type SearchWeatherAction = keyof typeof SearchWeatherActionTypes
 
 const setDailyWeather = (dailyWeather: []) => {
   return {
@@ -25,6 +31,13 @@ const setWeeklyWeather = (weeklyWeather: []) => {
   return {
     payload: { weeklyWeather },
     type: WeeklyWeatherActionTypes.SET_WEEKLY_WEATHER,
+  }
+}
+
+const setSearchWeather = (searchWeatherResults: []) => {
+  return {
+    payload: { searchWeatherResults },
+    type: SearchWeatherActionTypes.SET_SEARCH_WEATHER,
   }
 }
 
@@ -42,6 +55,13 @@ const setWeeklyWeatherIsLoading = (isLoading: boolean) => {
   }
 }
 
+const setSearchWeatherIsLoading = (isLoading: boolean) => {
+  return {
+    payload: { isLoading },
+    type: SearchWeatherActionTypes.SET_SEARCH_WEATHER_IS_LOADING,
+  }
+}
+
 const setDailyWeatherHasError = (hasError: boolean) => {
   return {
     payload: { hasError },
@@ -56,6 +76,13 @@ const setWeeklyWeatherHasError = (hasError: boolean) => {
   }
 }
 
+const setSearchWeatherHasError = (hasError: boolean) => {
+  return {
+    payload: { hasError },
+    type: SearchWeatherActionTypes.SET_SEARCH_WEATHER_HAS_ERROR,
+  }
+}
+
 export const DailyWeatherActions = {
   setDailyWeather,
   setDailyWeatherIsLoading,
@@ -66,4 +93,10 @@ export const WeeklyWeatherActions = {
   setWeeklyWeather,
   setWeeklyWeatherIsLoading,
   setWeeklyWeatherHasError,
+}
+
+export const SearchWeatherActions = {
+  setSearchWeather,
+  setSearchWeatherIsLoading,
+  setSearchWeatherHasError,
 }

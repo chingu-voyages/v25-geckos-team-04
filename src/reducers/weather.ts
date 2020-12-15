@@ -1,6 +1,7 @@
 import {
   DailyWeatherActionTypes,
   WeeklyWeatherActionTypes,
+  SearchWeatherActionTypes,
 } from '../actions/weather'
 import { IAction } from '../actions/types'
 
@@ -24,6 +25,25 @@ interface IWeeklyWeatherReducerReducerState {
 
 export const weeklyWeatherReducerInitialState = {
   weeklyWeather: [],
+  isLoading: false,
+  hasError: false,
+}
+
+interface ISearchWeatherReducerReducerState {
+  searchWeatherResults: {
+    list: {
+      id: number
+      name: string
+      coord: { lat: number; lon: number }
+      sys: { country: string }
+    }[]
+  }
+  isLoading: boolean
+  hasError: boolean
+}
+
+export const searchWeatherReducerInitialState = {
+  searchWeatherResults: [],
   isLoading: false,
   hasError: false,
 }
@@ -54,6 +74,25 @@ export const weeklyWeatherReducer = (
     case WeeklyWeatherActionTypes.SET_WEEKLY_WEATHER_IS_LOADING:
       return { ...state, isLoading: action.payload.isLoading }
     case WeeklyWeatherActionTypes.SET_WEEKLY_WEATHER_HAS_ERROR:
+      return { ...state, hasError: action.payload.hasError }
+    default:
+      return state
+  }
+}
+
+export const searchWeatherReducer = (
+  state: ISearchWeatherReducerReducerState,
+  action: IAction,
+) => {
+  switch (action.type) {
+    case SearchWeatherActionTypes.SET_SEARCH_WEATHER:
+      return {
+        ...state,
+        searchWeatherResults: action.payload.searchWeatherResults,
+      }
+    case SearchWeatherActionTypes.SET_SEARCH_WEATHER_IS_LOADING:
+      return { ...state, isLoading: action.payload.isLoading }
+    case SearchWeatherActionTypes.SET_SEARCH_WEATHER_HAS_ERROR:
       return { ...state, hasError: action.payload.hasError }
     default:
       return state

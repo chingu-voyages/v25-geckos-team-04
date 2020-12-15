@@ -11,22 +11,39 @@ import { AppContext } from '../../contexts/AppContext'
 import { IconMatch } from '../../utils/IconMatch'
 
 interface ISidebar {
-  showSearchSidebar: () => void
+  updateWeatherByCurrentLocation: () => void
   weatherData: {
     name: string
     main: { temp: number }
     weather: { main: string; id: number }[]
+    sys: { country: string }
   }
 }
 
-export const Sidebar: FC<ISidebar> = ({ weatherData, showSearchSidebar }) => {
+export const Sidebar: FC<ISidebar> = ({
+  weatherData,
+  updateWeatherByCurrentLocation,
+}) => {
   const appContext = useContext(AppContext)
 
   return (
-    <aside className={styles.container}>
+    <aside
+      className={styles.container}
+      style={
+        appContext.showSearchSidebar
+          ? { display: 'none' }
+          : { display: 'block' }
+      }
+    >
       <div className={styles.navigationHeader}>
-        <Button onClick={showSearchSidebar}>Search for places</Button>
-        <IconButton name="gps" />
+        <Button
+          onClick={() => {
+            appContext.setShowSearchSidebar(true)
+          }}
+        >
+          Search for places
+        </Button>
+        <IconButton name="gps" onClick={updateWeatherByCurrentLocation} />
       </div>
       <div className={styles.weatherIconContainer}>
         <div className={styles.weatherIcon}>
@@ -46,7 +63,13 @@ export const Sidebar: FC<ISidebar> = ({ weatherData, showSearchSidebar }) => {
       <div className={styles.footer}>
         Today • <DateComponent date={new Date()} formatString="eee, dd MMM" />
         <br />
-        <CurrentPlace place={weatherData.name ? weatherData.name : ''} />
+        <CurrentPlace
+          place={
+            weatherData.name
+              ? `${weatherData.name}, ${weatherData.sys.country}`
+              : ''
+          }
+        />
       </div>
     </aside>
   )

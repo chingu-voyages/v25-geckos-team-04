@@ -46,7 +46,6 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
             name="celsius"
             on={appContext.units === 'metric'}
             onClick={() => {
-              console.log('OH YEAH')
               appContext.setUnits('metric')
             }}
           />
@@ -54,7 +53,6 @@ export const MainPage: FC<IMainPage> = ({ weatherData }) => {
             name="fahrenheit"
             on={appContext.units === 'imperial'}
             onClick={() => {
-              console.log('OH NO')
               appContext.setUnits('imperial')
             }}
           />

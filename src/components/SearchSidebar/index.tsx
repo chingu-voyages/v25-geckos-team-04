@@ -1,26 +1,47 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useContext } from 'react'
 import CloseIcon from '@material-ui/icons/Close'
 import styles from './SearchSidebar.module.css'
 import { Input } from '../Input'
 import { Button } from '../Button'
 import { CitySearchList } from '../CitySearchList'
 import { CityLink } from '../CityLink'
+import { AppContext } from '../../contexts/AppContext'
 
 interface ISearchSidebar {
-  hideSearchSidebar: () => void
-  citySearchString: string
-  setCitySearchString: (arg0: string) => void
-  citySearchResults: { name: string; id: number; sys: { country: string } }[]
+  setCitySearchString: (value: string) => void
+  citySearchResults: {
+    list: {
+      id: number
+      name: string
+      coord: { lat: number; lon: number }
+      sys: { country: string }
+    }[]
+  }
 }
 
-export const SearchSidebar: FC<ISearchSidebar> = (props) => {
+export const SearchSidebar: FC<ISearchSidebar> = ({
+  setCitySearchString,
+  citySearchResults,
+}) => {
+  const appContext = useContext(AppContext)
+  const [inputString, setInputString] = useState('')
+
   return (
-    <aside className={styles.container}>
+    <aside
+      className={styles.container}
+      style={
+        appContext.showSearchSidebar
+          ? { display: 'block' }
+          : { display: 'none' }
+      }
+    >
       <div className={styles.top}>
         <button
           className={styles.closeButton}
           type="button"
-          onClick={props.hideSearchSidebar}
+          onClick={() => {
+            appContext.setShowSearchSidebar(false)
+          }}
         >
           <CloseIcon fontSize="large" />
         </button>
@@ -29,24 +50,34 @@ export const SearchSidebar: FC<ISearchSidebar> = (props) => {
         <Input
           isSearchInput={true}
           placeholder="search location"
-          value={props.citySearchString}
-          onChange={(e) => props.setCitySearchString(e.currentTarget.value)}
+          value={inputString}
+          onChange={(e) => {
+            setInputString(e.currentTarget.value)
+          }}
         />
-        <Button color="accent" onClick={(e) => e}>
+        <Button
+          color="accent"
+          onClick={() => {
+            setCitySearchString(inputString)
+          }}
+        >
           Search
         </Button>
       </div>
       <CitySearchList>
-        {props.citySearchResults.map(
-          (city: { id: number; name: string; sys: { country: string } }) => (
+        {citySearchResults.list &&
+          citySearchResults.list.map((city) => (
             <CityLink
               key={city.id}
               city={city.name}
               country={city.sys.country}
-              onClick={() => {}}
+              onClick={() => {
+                appContext.setLatLon(city.coord)
+                appContext.setWeatherByCurrentLocation(false)
+                appContext.setShowSearchSidebar(false)
+              }}
             />
-          ),
-        )}
+          ))}
       </CitySearchList>
     </aside>
   )
