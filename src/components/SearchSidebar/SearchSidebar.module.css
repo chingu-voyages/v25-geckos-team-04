@@ -1,12 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   background-color: var(--color-primary-bg);
-  width: calc(32% - 5.5rem);
-  height: 100%;
+  width: 32%;
+  min-height: 100vh;
   text-align: center;
-  padding: 2rem;
+}
+
+.container > * {
+  margin: 1.5rem;
 }
 
 .top {
@@ -30,6 +32,12 @@
   gap: 1rem;
 }
 
+@media only screen and (max-width: 1350px) {
+  .search {
+    flex-direction: column;
+  }
+}
+
 @media only screen and (max-width: 960px) {
   .container {
     width: 100%;
@@ -37,5 +45,9 @@
 
   .top {
     padding-right: 2rem;
+  }
+
+  .search {
+    align-items: center;
   }
 }

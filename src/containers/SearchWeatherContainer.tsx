@@ -72,7 +72,7 @@ export const SearchWeatherContainer: FC<ISearchWeatherContainer> = ({
     getSearchWeatherResults(searchString, appContext.units)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchString, appContext.units])
+  }, [searchString])
 
   const { searchWeatherResults, isLoading, hasError } = weatherState
 
