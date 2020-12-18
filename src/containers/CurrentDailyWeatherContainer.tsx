@@ -87,7 +87,7 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
     getDailyWeather()
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [appContext.latLon, appContext.units])
+  }, [appContext.latLon, appContext.units, appContext.weatherByCurrentLocation])
 
   const { dailyWeather, isLoading, hasError } = weatherState
 
