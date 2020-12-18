@@ -15,7 +15,7 @@ const SIZES = {
 export const WeatherIcon: FC<IWeatherIcon> = ({ icon, size = 'small' }) => {
   return (
     <img
-      width="auto"
+      max-width="auto"
       height={SIZES[size]}
       alt={`${icon} - icon`}
       src={IMAGES[icon]}

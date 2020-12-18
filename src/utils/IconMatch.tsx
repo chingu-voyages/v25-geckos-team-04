@@ -1,5 +1,7 @@
 // https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
-const weatherCodes = {
+import { WeatherIconType } from '../components/WeatherIcon/WeatherIcons'
+
+const weatherCodes: { [key: number]: WeatherIconType } = {
   200: 'thunderstorm',
   201: 'thunderstorm',
   202: 'thunderstorm',
@@ -57,13 +59,6 @@ const weatherCodes = {
   804: 'heavyCloud',
 }
 
-export default function IconMatch(weatherId: number): string {
-  const weatherIcon = Object.entries(weatherCodes).find(
-    (entry) => Number(entry[0]) === weatherId,
-  )
-
-  if (weatherIcon) {
-    return weatherIcon[1]
-  }
-  return 'clear'
+export const IconMatch = (weatherId: number) => {
+  return weatherCodes[weatherId]
 }

@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useReducer } from 'react'
+import React, { FC, useEffect, useReducer, useContext } from 'react'
+import { AppContext } from '../contexts/AppContext'
 import { openWeatherApi } from '../api'
 import {
   dailyWeatherReducerInitialState,
@@ -6,16 +7,17 @@ import {
 } from '../reducers/weather'
 import { DailyWeatherActions } from '../actions/weather'
 
-export interface ICoords {
-  lon: number
-  lat: number
-}
-
 interface IInjectedDailyWeatherRenderProps {
-  dailyWeather: any[]
+  dailyWeather: {
+    name: string
+    main: { temp: number }
+    weather: { main: string; id: number }[]
+    sys: { country: string }
+  }
   isLoading: boolean
   hasError: boolean
-  getDailyWeather: (coords: ICoords) => void
+  getDailyWeather: () => void
+  updateWeatherByCurrentLocation: () => void
 }
 
 interface ICurrentDailyWeatherContainer {
@@ -30,47 +32,62 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
     dailyWeatherReducerInitialState,
   )
 
-  const getDailyWeather = async (coords: ICoords) => {
-    dispatch(DailyWeatherActions.setIsLoading(true))
-    dispatch(DailyWeatherActions.setHasError(false))
+  const appContext = useContext(AppContext)
+
+  function updateWeatherByCurrentLocation() {
+    appContext.setWeatherByCurrentLocation(true)
+  }
+
+  const getDailyWeather = async () => {
+    dispatch(DailyWeatherActions.setDailyWeatherIsLoading(true))
+    dispatch(DailyWeatherActions.setDailyWeatherHasError(false))
 
     try {
       const { data } = await openWeatherApi.get('/weather', {
         params: {
-          lat: coords.lat,
-          lon: coords.lon,
-          units: 'metric',
+          lat: appContext.latLon.lat,
+          lon: appContext.latLon.lon,
+          units: appContext.units,
         },
       })
 
       dispatch(DailyWeatherActions.setDailyWeather(data))
-      dispatch(DailyWeatherActions.setIsLoading(false))
+      dispatch(DailyWeatherActions.setDailyWeatherIsLoading(false))
     } catch (e) {
-      dispatch(DailyWeatherActions.setIsLoading(false))
-      dispatch(DailyWeatherActions.setHasError(true))
+      dispatch(DailyWeatherActions.setDailyWeatherIsLoading(false))
+      dispatch(DailyWeatherActions.setDailyWeatherHasError(true))
+    }
+  }
+
+  function setLocationToCurrent(pos: {
+    coords: { latitude: number; longitude: number }
+  }) {
+    const crd = pos.coords
+    const lat = crd.latitude
+    const lon = crd.longitude
+
+    if (
+      lat &&
+      lon &&
+      lat !== appContext.latLon.lat &&
+      lon !== appContext.latLon.lon
+    ) {
+      appContext.setLatLon({ lat, lon })
     }
   }
 
   useEffect(() => {
-    let lat
-    let lon
+    dispatch(DailyWeatherActions.setDailyWeatherIsLoading(true))
+    dispatch(DailyWeatherActions.setDailyWeatherHasError(false))
 
-    dispatch(DailyWeatherActions.setIsLoading(true))
-    dispatch(DailyWeatherActions.setHasError(false))
-
-    function success(pos: { coords: { latitude: number; longitude: number } }) {
-      const crd = pos.coords
-
-      lat = crd.latitude
-      lon = crd.longitude
-
-      if (lat && lon) {
-        getDailyWeather({ lat, lon })
-      }
+    if (appContext.weatherByCurrentLocation) {
+      navigator.geolocation.getCurrentPosition(setLocationToCurrent)
     }
 
-    navigator.geolocation.getCurrentPosition(success)
-  }, [])
+    getDailyWeather()
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [appContext.latLon, appContext.units])
 
   const { dailyWeather, isLoading, hasError } = weatherState
 
@@ -79,5 +96,6 @@ export const CurrentDailyWeatherContainer: FC<ICurrentDailyWeatherContainer> = (
     getDailyWeather,
     isLoading,
     hasError,
+    updateWeatherByCurrentLocation,
   })
 }

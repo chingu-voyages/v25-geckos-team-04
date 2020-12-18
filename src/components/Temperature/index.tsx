@@ -2,16 +2,12 @@ import React, { FC } from 'react'
 import styles from './Temperature.module.css'
 
 interface ITemperature {
-  metric?: 'fahrenheit' | 'celsius'
+  units: 'imperial' | 'metric'
   value: string | number
   size?: 'small' | 'big'
 }
 
-export const Temperature: FC<ITemperature> = ({
-  metric = 'celsius',
-  value,
-  size,
-}) => {
+export const Temperature: FC<ITemperature> = ({ units, value, size }) => {
   return (
     <span>
       <span
@@ -26,7 +22,7 @@ export const Temperature: FC<ITemperature> = ({
           size === 'small' ? styles.small : styles.big
         }`}
       >
-        &deg;{metric === 'celsius' ? 'C' : 'F'}
+        &deg;{units === 'metric' ? 'C' : 'F'}
       </span>
     </span>
   )

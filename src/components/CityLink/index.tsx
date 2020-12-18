@@ -18,5 +18,3 @@ export const CityLink: FC<ICityLink> = ({ city, country, onClick }) => {
     </button>
   )
 }
-
-// <CityLink city='Barcelona' onClick={} />

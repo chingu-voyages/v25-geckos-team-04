@@ -20,9 +20,18 @@
   background-color: var(--color-primary-light);
 }
 
+.primary:hover {
+  background-color: var(--gray-2);
+  color: var(--color-primary-light);
+}
+
 .secondary {
   color: var(--color-primary-light);
   background-color: var(--gray-3);
+}
+
+.secondary:hover {
+  background-color: var(--gray-2);
 }
 
 .gps {
