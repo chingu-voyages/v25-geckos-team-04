@@ -29,7 +29,10 @@
 
 .search {
   display: flex;
-  gap: 1rem;
+}
+
+.search > * {
+  margin: 1rem;
 }
 
 @media only screen and (max-width: 1350px) {
