@@ -21,3 +21,5 @@ export const IMAGES = {
   snow: Snow,
   thunderstorm: Thunderstorm,
 }
+
+export type WeatherIconType = keyof typeof IMAGES

@@ -5,15 +5,17 @@ import styles from './IconButton.module.css'
 interface IIconButton {
   name: 'gps' | 'celsius' | 'fahrenheit'
   on?: boolean
+  onClick?: () => void
 }
 
-export const IconButton: FC<IIconButton> = ({ name, on }) => {
+export const IconButton: FC<IIconButton> = ({ name, on, onClick }) => {
   return (
     <button
       type="button"
       className={`${styles.container} ${name === 'gps' ? styles.gps : null} ${
         on ? styles.primary : styles.secondary
       }`}
+      onClick={onClick}
     >
       {name === 'gps' && <GpsFixedIcon fontSize="large" />}
       {name === 'celsius' && <span>&deg;C</span>}

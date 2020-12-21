@@ -3,20 +3,17 @@ import { HighlightCard } from '../HighlightCard'
 import styles from './VisibilityCard.module.css'
 
 interface IVisibilityCard {
-  metric: 'celsius' | 'fahrenheit'
+  units: 'metric' | 'imperial'
   value: number
 }
 
-export const VisibilityCard: FC<IVisibilityCard> = ({
-  metric = 'celsius',
-  value,
-}) => {
+export const VisibilityCard: FC<IVisibilityCard> = ({ units, value }) => {
   return (
     <HighlightCard>
       <div className={styles.title}>Visibility</div>
       <div className={styles.main}>
         <span className={styles.value}>{value}</span>
-        {metric === 'celsius' ? 'km' : 'miles'}
+        {units === 'metric' ? 'km' : 'miles'}
       </div>
     </HighlightCard>
   )

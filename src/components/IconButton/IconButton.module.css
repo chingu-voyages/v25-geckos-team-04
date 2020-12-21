@@ -11,9 +11,18 @@
   border: none;
 }
 
+.container:hover {
+  cursor: pointer;
+}
+
 .primary {
   color: var(--color-primary-bg);
   background-color: var(--color-primary-light);
+}
+
+.primary:hover {
+  background-color: var(--gray-2);
+  color: var(--color-primary-light);
 }
 
 .secondary {
@@ -21,7 +30,15 @@
   background-color: var(--gray-3);
 }
 
+.secondary:hover {
+  background-color: var(--gray-2);
+}
+
 .gps {
   background-color: var(--gray-2);
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+}
+
+.gps:hover {
+  background-color: var(--black);
 }
