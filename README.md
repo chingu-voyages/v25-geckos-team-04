@@ -1,4 +1,4 @@
-# Weather app
+# ⛈️ Worldwide Weather ⛈️
 
 With this weather app you can get the weather forecast for the whole week for any city in the world. Simply search for the city you want to get the forecast for and it will display the forecast for today in detail and a summary for the rest of the week.
 
